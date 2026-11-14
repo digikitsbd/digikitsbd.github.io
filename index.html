@@ -8,47 +8,69 @@
     <title>Digikitsbd.com</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Archivo:wght@600;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Archivo:wght@600;700;800&display=swap" rel="stylesheet" />
     <style>
       button, [role="button"], select, summary, input:not([type="checkbox"], [type="radio"]) { min-height: 2.25rem; }
 
       :root {
         --bg: #ffffff;
-        --bg-soft: #eef6f2;
-        --bg-band: #0c3b2e;
-        --ink: #15211c;
-        --ink-soft: #45564e;
-        --line: #d9e4de;
-        --brand: #0b6b4f;
-        --brand-dark: #084c38;
-        --brand-soft: #dcefe6;
-        --accent: #e4572e;
-        --accent-soft: #fdeee8;
-        --gold: #c9962e;
+        --bg-soft: #f2f7f4;
+        --bg-softer: #e9f2ec;
+        --bg-band: #0a3527;
+        --bg-band-2: #0d4534;
+        --ink: #131f1a;
+        --ink-soft: #4b5d54;
+        --ink-faint: #71837a;
+        --line: #dde7e1;
+        --line-strong: #c8d8cf;
+        --brand: #0a6e4f;
+        --brand-dark: #07573e;
+        --brand-deep: #06402d;
+        --brand-soft: #e2f1e9;
+        --brand-tint: #f0f8f3;
+        --accent: #d9481f;
+        --accent-soft: #fdf0ea;
+        --gold: #b8860b;
+        --gold-bright: #d9a521;
         --card: #ffffff;
-        --shadow: 0 10px 30px rgba(12, 59, 46, .10);
-        --pink-bg: #fbe3ec;
-        --pink-ink: #8c1d4f;
-        --pink-deep: #d6336c;
+        --shadow-sm: 0 2px 10px rgba(10, 53, 39, .06);
+        --shadow: 0 14px 34px rgba(10, 53, 39, .10);
+        --shadow-lg: 0 24px 50px rgba(10, 53, 39, .14);
+        --pink-bg: #fce7ef;
+        --pink-mid: #f6c3d5;
+        --pink-ink: #7d1a44;
+        --pink-deep: #cf2e6b;
+        --radius: 16px;
       }
       @media (prefers-color-scheme: dark) {
         :root {
-          --bg: #0f1714;
-          --bg-soft: #16241e;
-          --bg-band: #081f18;
-          --ink: #eef4f1;
-          --ink-soft: #a9bcb3;
-          --line: #2a3d35;
-          --brand: #2fae85;
-          --brand-dark: #7fd3b6;
-          --brand-soft: #1b322a;
-          --accent: #ff8a5f;
-          --accent-soft: #3a241c;
-          --card: #16211c;
-          --shadow: 0 10px 30px rgba(0, 0, 0, .35);
-          --pink-bg: #3d1f2e;
-          --pink-ink: #f6c6da;
-          --pink-deep: #e86a9c;
+          --bg: #0d1512;
+          --bg-soft: #14211b;
+          --bg-softer: #1a2b22;
+          --bg-band: #071f16;
+          --bg-band-2: #0a2c1f;
+          --ink: #edf4f0;
+          --ink-soft: #a7bcb1;
+          --ink-faint: #84998d;
+          --line: #263a31;
+          --line-strong: #355144;
+          --brand: #34b98c;
+          --brand-dark: #8adbbd;
+          --brand-deep: #b5ecd6;
+          --brand-soft: #173327;
+          --brand-tint: #12241c;
+          --accent: #ff9266;
+          --accent-soft: #38221a;
+          --gold: #d9a521;
+          --gold-bright: #eec95c;
+          --card: #14211b;
+          --shadow-sm: 0 2px 10px rgba(0,0,0,.25);
+          --shadow: 0 14px 34px rgba(0,0,0,.35);
+          --shadow-lg: 0 24px 50px rgba(0,0,0,.45);
+          --pink-bg: #3a1e2c;
+          --pink-mid: #5c3049;
+          --pink-ink: #f7c9da;
+          --pink-deep: #ec74a2;
         }
       }
 
@@ -61,237 +83,381 @@
         color: var(--ink);
         line-height: 1.65;
         -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
       }
-      .wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
-      h1, h2, h3 { line-height: 1.3; margin: 0; }
+      .wrap { max-width: 1120px; margin: 0 auto; padding: 0 22px; }
+      h1, h2, h3 { line-height: 1.28; margin: 0; letter-spacing: -.01em; }
       p { margin: 0; }
       a { color: var(--brand); }
       .num { font-family: "Archivo", "Hind Siliguri", sans-serif; letter-spacing: .01em; }
+      ::selection { background: var(--brand-soft); }
 
-      /* ---------- Hero ---------- */
-      .hero { padding: 44px 0 8px; }
-      .hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 36px; align-items: center; }
-      .hero-tag {
-        display: inline-block; font-size: .92rem; font-weight: 600;
-        color: var(--brand-dark); background: var(--brand-soft);
-        padding: 5px 14px; border-radius: 999px; margin-bottom: 16px;
-      }
-      .hero h1 { font-size: clamp(1.9rem, 4.6vw, 2.9rem); font-weight: 700; }
-      .hero h1 .hl { color: var(--brand); }
-      .hero-sub { margin-top: 14px; font-size: 1.08rem; color: var(--ink-soft); max-width: 34em; }
-      .hero-points { list-style: none; margin: 20px 0 0; padding: 0; display: grid; gap: 8px; }
-      .hero-points li { display: flex; gap: 10px; align-items: baseline; font-weight: 500; }
-      .hero-points li::before { content: "✓"; color: var(--brand); font-weight: 700; }
-      .price-row { display: flex; align-items: baseline; gap: 14px; margin-top: 26px; flex-wrap: wrap; }
-      .price-now { font-size: 2.6rem; font-weight: 800; color: var(--brand); line-height: 1; }
-      .price-was { font-size: 1.35rem; color: var(--ink-soft); text-decoration: line-through; }
-      .price-note { font-size: .95rem; color: var(--accent); font-weight: 600; }
-      .cta-row { display: flex; gap: 12px; margin-top: 20px; flex-wrap: wrap; }
+      /* ---------- Buttons ---------- */
       .btn {
         display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-        font-family: inherit; font-size: 1.05rem; font-weight: 600;
-        padding: 12px 26px; border-radius: 10px; border: 2px solid transparent;
-        cursor: pointer; text-decoration: none; min-height: 48px;
+        font-family: inherit; font-size: 1.03rem; font-weight: 600; line-height: 1.3;
+        padding: 13px 28px; border-radius: 12px; border: 1.5px solid transparent;
+        cursor: pointer; text-decoration: none; min-height: 50px;
+        transition: background .18s ease, border-color .18s ease, color .18s ease, transform .18s ease;
       }
-      .btn-primary { background: var(--brand); color: #fff; }
+      .btn:active { transform: translateY(1px); }
+      .btn-primary { background: var(--brand); color: #fff; box-shadow: 0 8px 20px rgba(10,110,79,.22); }
       .btn-primary:hover { background: var(--brand-dark); }
-      @media (prefers-color-scheme: dark) { .btn-primary { color: #08130f; } .btn-primary:hover { color: #08130f; } }
-      .btn-ghost { background: transparent; color: var(--ink); border-color: var(--line); }
+      @media (prefers-color-scheme: dark) { .btn-primary { color: #07130d; } .btn-primary:hover { color: #07130d; } }
+      .btn-ghost { background: var(--card); color: var(--ink); border-color: var(--line-strong); }
       .btn-ghost:hover { border-color: var(--brand); color: var(--brand); }
+      .btn .arr { font-weight: 700; }
 
-      /* Hero visual: stacked template mock */
-      .hero-visual { position: relative; min-height: 340px; }
+      /* ---------- Hero ---------- */
+      .hero {
+        padding: 52px 0 0;
+        background:
+          radial-gradient(560px 300px at 88% -60px, var(--brand-soft) 0%, transparent 65%),
+          linear-gradient(180deg, var(--brand-tint), var(--bg) 78%);
+        border-bottom: 1px solid var(--line);
+      }
+      .hero-grid { display: grid; grid-template-columns: 1.04fr .96fr; gap: 44px; align-items: center; padding-bottom: 52px; }
+      .hero-tag {
+        display: inline-flex; align-items: center; gap: 8px;
+        font-size: .9rem; font-weight: 600; color: var(--brand-dark);
+        background: var(--card); border: 1.5px solid var(--brand-soft);
+        padding: 6px 14px 6px 10px; border-radius: 999px; margin-bottom: 18px;
+        box-shadow: var(--shadow-sm);
+      }
+      .hero-tag .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--brand); flex: 0 0 auto; }
+      .hero h1 { font-size: clamp(2rem, 4.8vw, 3.05rem); font-weight: 700; }
+      .hero h1 .hl { color: var(--brand); white-space: nowrap; }
+      .hero-sub { margin-top: 16px; font-size: 1.1rem; color: var(--ink-soft); max-width: 33em; }
+      .hero-points { list-style: none; margin: 22px 0 0; padding: 0; display: grid; gap: 10px; }
+      .hero-points li { display: flex; gap: 11px; align-items: flex-start; font-weight: 500; font-size: 1.02rem; }
+      .hero-points .tick {
+        flex: 0 0 auto; width: 22px; height: 22px; border-radius: 50%; margin-top: 3px;
+        background: var(--brand); color: #fff; font-size: .78rem; font-weight: 700;
+        display: flex; align-items: center; justify-content: center;
+      }
+      @media (prefers-color-scheme: dark) { .hero-points .tick { color: #07130d; } }
+
+      .price-card {
+        margin-top: 28px; background: var(--card); border: 1.5px solid var(--line);
+        border-radius: var(--radius); padding: 18px 20px; box-shadow: var(--shadow-sm);
+        display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+      }
+      .price-main { display: flex; align-items: baseline; gap: 12px; }
+      .price-now { font-size: 2.5rem; font-weight: 800; color: var(--brand); line-height: 1; }
+      .price-was { font-size: 1.3rem; color: var(--ink-faint); text-decoration: line-through; }
+      .price-side { border-left: 1px dashed var(--line-strong); padding-left: 20px; }
+      .price-side strong { display: block; color: var(--accent); font-size: 1rem; line-height: 1.35; }
+      .price-side span { font-size: .9rem; color: var(--ink-soft); }
+      .cta-row { display: flex; gap: 12px; margin-top: 22px; flex-wrap: wrap; }
+      .cta-note { margin-top: 12px; font-size: .92rem; color: var(--ink-faint); display: flex; align-items: center; gap: 7px; }
+      .cta-note svg { flex: 0 0 auto; }
+
+      /* Hero visual */
+      .hero-visual { position: relative; min-height: 400px; }
       .mock {
-        border-radius: 14px; overflow: hidden; box-shadow: var(--shadow);
+        border-radius: 16px; overflow: hidden; box-shadow: var(--shadow);
         aspect-ratio: 1 / 1; display: flex; flex-direction: column;
-        align-items: center; justify-content: center; text-align: center; padding: 8%;
+        align-items: center; justify-content: center; text-align: center; padding: 7%;
+        position: relative;
       }
-      .mock .mock-kicker { font-size: .72em; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; opacity: .75; }
-      .mock .mock-title { font-weight: 700; line-height: 1.25; margin: 6px 0; }
-      .mock .mock-sub { font-size: .85em; opacity: .85; }
+      .mock .mock-kicker { font-size: .7em; font-weight: 600; letter-spacing: .13em; text-transform: uppercase; opacity: .72; }
+      .mock .mock-title { font-weight: 700; line-height: 1.25; margin: 5px 0; }
+      .mock .mock-sub { font-size: .84em; opacity: .85; }
       .mock .mock-chip {
-        margin-top: 12px; font-size: .8em; font-weight: 600;
-        padding: 5px 14px; border-radius: 999px;
+        margin-top: 12px; font-size: .78em; font-weight: 600;
+        padding: 6px 16px; border-radius: 999px;
       }
-      .hero-visual .mock-a { position: absolute; width: 62%; left: 0; top: 0; z-index: 2; }
-      .hero-visual .mock-b { position: absolute; width: 52%; right: 0; bottom: 0; }
-      .theme-pink { background: var(--pink-bg); color: var(--pink-ink); }
+      .photo-slot {
+        width: 62%; aspect-ratio: 4 / 3; margin: 10px auto 4px;
+        border: 1.5px dashed currentColor; border-radius: 10px;
+        display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px;
+        opacity: .9; font-size: .72em; font-weight: 600; padding: 6px;
+        background: rgba(255,255,255,.35);
+      }
+      .photo-slot svg { opacity: .8; }
+      .theme-pink .photo-slot { background: rgba(255,255,255,.45); }
+      .theme-dark .photo-slot { background: rgba(255,255,255,.07); }
+      .theme-minimal .photo-slot { background: rgba(0,0,0,.03); }
+
+      .hero-visual .mock-a { position: absolute; width: 60%; left: 0; top: 0; z-index: 2; box-shadow: var(--shadow-lg); }
+      .hero-visual .mock-b { position: absolute; width: 50%; right: 0; bottom: 26px; }
+      .float-badge {
+        position: absolute; z-index: 3; left: 6%; bottom: 0;
+        background: var(--card); border: 1.5px solid var(--line); border-radius: 12px;
+        box-shadow: var(--shadow); padding: 10px 16px;
+        display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: .95rem; line-height: 1.3;
+      }
+      .float-badge .fb-ico {
+        width: 34px; height: 34px; border-radius: 50%; background: var(--brand-soft);
+        display: flex; align-items: center; justify-content: center; flex: 0 0 auto;
+      }
+      .float-badge small { display: block; font-weight: 500; color: var(--ink-soft); font-size: .8rem; }
+
+      .theme-pink { background: linear-gradient(160deg, var(--pink-bg), var(--pink-mid)); color: var(--pink-ink); }
       .theme-pink .mock-chip { background: var(--pink-deep); color: #fff; }
-      .theme-minimal { background: #f4f4f2; color: #1c1c1a; border: 1px solid #e2e2de; }
-      @media (prefers-color-scheme: dark) { .theme-minimal { background: #ececea; } }
-      .theme-minimal .mock-chip { background: #1c1c1a; color: #fff; }
-      .theme-dark { background: #17150f; color: #efe3c2; }
-      .theme-dark .mock-title { color: var(--gold); }
-      .theme-dark .mock-chip { background: var(--gold); color: #17150f; }
+      .theme-minimal { background: #f6f6f3; color: #1d1d1a; border: 1px solid #e3e3de; }
+      @media (prefers-color-scheme: dark) { .theme-minimal { background: #ededeb; } }
+      .theme-minimal .mock-chip { background: #1d1d1a; color: #fff; }
+      .theme-dark { background: linear-gradient(160deg, #221e13, #131109); color: #efe3c2; }
+      .theme-dark .mock-title { color: var(--gold-bright); }
+      .theme-dark .mock-chip { background: var(--gold-bright); color: #17150f; }
+
+      /* Trust strip */
+      .trust-strip { padding: 26px 0 4px; }
+      .trust-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+      .trust-item {
+        display: flex; gap: 12px; align-items: flex-start;
+        background: var(--bg-soft); border-radius: 14px; padding: 16px 18px;
+      }
+      .trust-item .t-ico {
+        flex: 0 0 auto; width: 38px; height: 38px; border-radius: 10px;
+        background: var(--card); border: 1px solid var(--line);
+        display: flex; align-items: center; justify-content: center; color: var(--brand);
+      }
+      .trust-item strong { display: block; font-weight: 600; font-size: .99rem; line-height: 1.35; }
+      .trust-item span { font-size: .88rem; color: var(--ink-soft); line-height: 1.45; display: block; }
 
       /* ---------- Sections ---------- */
-      section { padding: 52px 0 8px; }
-      .sec-head { max-width: 40em; }
-      .sec-head h2 { font-size: clamp(1.5rem, 3.4vw, 2rem); font-weight: 700; }
-      .sec-head p { color: var(--ink-soft); margin-top: 8px; }
+      section { padding: 58px 0 6px; }
+      .sec-head { max-width: 42em; margin-bottom: 4px; }
+      .sec-head.center { margin-left: auto; margin-right: auto; text-align: center; }
+      .sec-head h2 { font-size: clamp(1.55rem, 3.4vw, 2.05rem); font-weight: 700; }
+      .sec-head h2 .hl { color: var(--brand); }
+      .sec-head p { color: var(--ink-soft); margin-top: 9px; font-size: 1.03rem; }
 
-      .filters { display: flex; gap: 8px; flex-wrap: wrap; margin: 22px 0 18px; }
+      /* Preview */
+      .filters { display: flex; gap: 8px; flex-wrap: wrap; margin: 24px 0 20px; }
       .filter-btn {
-        font-family: inherit; font-size: .98rem; font-weight: 600;
-        padding: 8px 18px; border-radius: 999px; cursor: pointer;
-        background: var(--bg); color: var(--ink-soft); border: 1.5px solid var(--line);
-        min-height: 40px;
+        font-family: inherit; font-size: .97rem; font-weight: 600;
+        padding: 9px 20px; border-radius: 999px; cursor: pointer;
+        background: var(--card); color: var(--ink-soft); border: 1.5px solid var(--line);
+        min-height: 42px; transition: border-color .15s ease, color .15s ease, background .15s ease;
       }
-      .filter-btn[aria-pressed="true"] { background: var(--brand); border-color: var(--brand); color: #fff; }
-      @media (prefers-color-scheme: dark) { .filter-btn[aria-pressed="true"] { color: #08130f; } }
+      .filter-btn:hover { border-color: var(--brand); color: var(--brand); }
+      .filter-btn[aria-pressed="true"] { background: var(--brand); border-color: var(--brand); color: #fff; box-shadow: 0 6px 16px rgba(10,110,79,.2); }
+      @media (prefers-color-scheme: dark) { .filter-btn[aria-pressed="true"] { color: #07130d; } }
 
-      .preview-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-      .preview-card { display: flex; flex-direction: column; gap: 10px; }
-      .preview-card .mock { font-size: 15px; }
-      .preview-card .mock-title { font-size: 1.45em; }
-      .preview-cap { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
-      .preview-cap strong { font-weight: 600; }
-      .preview-cap span { font-size: .88rem; color: var(--ink-soft); white-space: nowrap; }
+      .preview-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+      .preview-card {
+        display: flex; flex-direction: column; gap: 0;
+        background: var(--card); border: 1.5px solid var(--line); border-radius: var(--radius);
+        padding: 10px 10px 14px; box-shadow: var(--shadow-sm);
+        transition: box-shadow .2s ease, border-color .2s ease;
+      }
+      .preview-card:hover { box-shadow: var(--shadow); border-color: var(--line-strong); }
+      .preview-card .mock { font-size: 15px; box-shadow: none; border-radius: 10px; }
+      .preview-card .mock-title { font-size: 1.4em; }
+      .preview-cap { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 12px 6px 0; }
+      .preview-cap strong { font-weight: 600; font-size: .99rem; }
+      .theme-tag { font-size: .8rem; font-weight: 600; white-space: nowrap; padding: 3px 10px; border-radius: 999px; background: var(--bg-soft); color: var(--ink-soft); border: 1px solid var(--line); }
       .preview-card[hidden] { display: none; }
-
-      /* Inside list */
-      .inside-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 34px; margin-top: 24px; }
-      .inside-item { display: flex; gap: 12px; }
-      .inside-item .tick {
-        flex: 0 0 auto; width: 26px; height: 26px; border-radius: 50%;
-        background: var(--brand-soft); color: var(--brand); font-weight: 700;
-        display: flex; align-items: center; justify-content: center; font-size: .9rem; margin-top: 3px;
+      .preview-note {
+        margin-top: 18px; background: var(--brand-tint); border: 1.5px dashed var(--line-strong);
+        border-radius: 12px; padding: 14px 18px; color: var(--ink-soft); font-size: .97rem; text-align: center;
       }
-      .inside-item strong { display: block; font-weight: 600; }
-      .inside-item span { color: var(--ink-soft); font-size: .97rem; }
+      .preview-note strong { color: var(--ink); }
+
+      /* Inside */
+      .inside-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 26px; }
+      .inside-item {
+        background: var(--card); border: 1.5px solid var(--line); border-radius: var(--radius);
+        padding: 22px; box-shadow: var(--shadow-sm);
+      }
+      .inside-item .tick {
+        width: 40px; height: 40px; border-radius: 12px; margin-bottom: 13px;
+        background: var(--brand-soft); color: var(--brand); font-weight: 700;
+        display: flex; align-items: center; justify-content: center; font-size: 1.05rem;
+      }
+      .inside-item strong { display: block; font-weight: 600; font-size: 1.05rem; margin-bottom: 4px; }
+      .inside-item span { color: var(--ink-soft); font-size: .96rem; }
 
       /* Themes band */
-      .band { background: var(--bg-band); color: #eaf3ef; border-radius: 18px; padding: 34px; margin-top: 26px; }
-      .band h3 { font-size: 1.3rem; margin-bottom: 6px; }
-      .band > p { color: #bcd4c9; max-width: 42em; }
-      .band-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 22px; }
-      .band-item { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.14); border-radius: 12px; padding: 18px; }
-      .band-item .swatch { width: 100%; height: 54px; border-radius: 8px; margin-bottom: 12px; }
-      .sw-pink { background: linear-gradient(120deg, #fbe3ec 55%, #d6336c 55%); }
-      .sw-min { background: linear-gradient(120deg, #f4f4f2 55%, #1c1c1a 55%); }
-      .sw-dark { background: linear-gradient(120deg, #17150f 55%, #c9962e 55%); }
-      .band-item strong { display: block; font-size: 1.05rem; }
-      .band-item span { color: #bcd4c9; font-size: .94rem; }
+      .band {
+        background: linear-gradient(150deg, var(--bg-band-2), var(--bg-band));
+        color: #eaf3ef; border-radius: 20px; padding: 38px; margin-top: 34px;
+        box-shadow: var(--shadow);
+      }
+      .band h3 { font-size: 1.35rem; margin-bottom: 6px; }
+      .band > p { color: #b9d2c6; max-width: 44em; }
+      .band-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 24px; }
+      .band-item { background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.13); border-radius: 14px; padding: 16px; }
+      .band-item .swatch { width: 100%; height: 86px; border-radius: 10px; margin-bottom: 14px; position: relative; overflow: hidden; }
+      .swatch::after {
+        content: "আপনার পণ্যের ছবি"; position: absolute; inset: auto 8px 8px auto;
+        font-size: .68rem; font-weight: 600; padding: 2px 8px; border-radius: 999px;
+        background: rgba(255,255,255,.85); color: #333;
+      }
+      .sw-pink { background: linear-gradient(130deg, #fce7ef 55%, #cf2e6b 55%); }
+      .sw-min { background: linear-gradient(130deg, #f6f6f3 55%, #1d1d1a 55%); }
+      .sw-dark { background: linear-gradient(130deg, #221e13 55%, #d9a521 55%); }
+      .band-item strong { display: block; font-size: 1.05rem; margin-bottom: 3px; }
+      .band-item span { color: #b9d2c6; font-size: .93rem; }
 
       /* Steps */
-      .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 24px; counter-reset: step; }
-      .step { background: var(--bg-soft); border-radius: 14px; padding: 20px; }
-      .step .step-no {
-        width: 34px; height: 34px; border-radius: 50%; background: var(--brand); color: #fff;
-        font-weight: 700; display: flex; align-items: center; justify-content: center; margin-bottom: 12px;
-        font-family: "Archivo", sans-serif;
+      .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 28px; position: relative; }
+      .step {
+        background: var(--card); border: 1.5px solid var(--line); border-radius: var(--radius);
+        padding: 24px 20px; box-shadow: var(--shadow-sm); position: relative;
       }
-      @media (prefers-color-scheme: dark) { .step .step-no { color: #08130f; } }
-      .step strong { display: block; font-weight: 600; margin-bottom: 4px; }
-      .step p { color: var(--ink-soft); font-size: .95rem; }
+      .step .step-no {
+        width: 38px; height: 38px; border-radius: 50%; background: var(--brand); color: #fff;
+        font-weight: 700; font-size: 1.05rem; display: flex; align-items: center; justify-content: center;
+        margin-bottom: 13px; font-family: "Archivo", sans-serif;
+        box-shadow: 0 6px 14px rgba(10,110,79,.25);
+      }
+      @media (prefers-color-scheme: dark) { .step .step-no { color: #07130d; } }
+      .step strong { display: block; font-weight: 600; font-size: 1.02rem; margin-bottom: 4px; }
+      .step p { color: var(--ink-soft); font-size: .94rem; }
 
       /* Order */
-      .order-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 30px; margin-top: 24px; align-items: start; }
-      .order-summary {
-        background: var(--card); border: 1.5px solid var(--line); border-radius: 16px;
-        padding: 24px; box-shadow: var(--shadow);
+      .order-panel {
+        background: var(--bg-soft); border: 1.5px solid var(--line); border-radius: 20px;
+        padding: 30px; margin-top: 26px;
       }
-      .order-summary h3 { font-size: 1.15rem; margin-bottom: 14px; }
-      .sum-row { display: flex; justify-content: space-between; gap: 12px; padding: 9px 0; border-bottom: 1px dashed var(--line); }
+      .order-grid { display: grid; grid-template-columns: .92fr 1.08fr; gap: 28px; align-items: start; }
+      .order-summary {
+        background: var(--card); border: 1.5px solid var(--line); border-radius: var(--radius);
+        padding: 24px; box-shadow: var(--shadow-sm); position: sticky; top: 18px;
+      }
+      .order-summary h3 { font-size: 1.13rem; margin-bottom: 12px; display: flex; align-items: center; gap: 9px; }
+      .order-summary h3 .os-ico { width: 30px; height: 30px; border-radius: 8px; background: var(--brand-soft); color: var(--brand); display: flex; align-items: center; justify-content: center; flex: 0 0 auto; }
+      .sum-row { display: flex; justify-content: space-between; gap: 12px; padding: 10px 0; border-bottom: 1px dashed var(--line); font-size: .99rem; }
       .sum-row:last-of-type { border-bottom: none; }
       .sum-row span { color: var(--ink-soft); }
-      .sum-row .strike { text-decoration: line-through; margin-right: 8px; color: var(--ink-soft); font-weight: 400; }
-      .sum-total { font-size: 1.25rem; font-weight: 700; color: var(--brand); }
+      .sum-row strong { text-align: right; }
+      .sum-row .strike { text-decoration: line-through; margin-right: 8px; color: var(--ink-faint); font-weight: 400; }
+      .sum-total { font-size: 1.3rem; font-weight: 800; color: var(--brand); }
       .launch-pill {
         margin-top: 16px; background: var(--accent-soft); color: var(--accent);
-        border-radius: 10px; padding: 12px 14px; font-weight: 600; font-size: .97rem;
+        border-radius: 10px; padding: 12px 14px; font-weight: 600; font-size: .95rem; line-height: 1.5;
       }
-      .pay-methods { display: flex; gap: 10px; margin-top: 16px; }
+      .pay-methods { display: flex; gap: 10px; margin-top: 14px; }
       .pay-badge {
         flex: 1; text-align: center; border: 1.5px solid var(--line); border-radius: 10px;
-        padding: 10px 6px; font-weight: 700;
+        padding: 10px 6px; font-weight: 700; background: var(--card);
       }
-      .pay-badge small { display: block; font-weight: 500; color: var(--ink-soft); font-size: .82rem; }
-      .pay-bkash { color: #d1105a; }
-      .pay-nagad { color: #e8541d; }
+      .pay-badge small { display: block; font-weight: 500; color: var(--ink-soft); font-size: .8rem; }
+      .pay-bkash { color: #c40e54; }
+      .pay-nagad { color: #dd4f16; }
+      @media (prefers-color-scheme: dark) { .pay-bkash { color: #ff7dab; } .pay-nagad { color: #ffa07a; } }
+      .sum-safe { margin-top: 14px; font-size: .88rem; color: var(--ink-faint); display: flex; gap: 7px; align-items: flex-start; }
+      .sum-safe svg { flex: 0 0 auto; margin-top: 2px; }
 
+      .form-card { background: var(--card); border: 1.5px solid var(--line); border-radius: var(--radius); padding: 26px; box-shadow: var(--shadow-sm); }
+      .form-card h3 { font-size: 1.13rem; margin-bottom: 4px; }
+      .form-card > p { color: var(--ink-soft); font-size: .95rem; margin-bottom: 18px; }
       form.order-form { display: grid; gap: 16px; }
-      .field label { display: block; font-weight: 600; margin-bottom: 6px; }
+      .field label { display: block; font-weight: 600; margin-bottom: 6px; font-size: .99rem; }
+      .field label .req { color: var(--accent); }
       .field input[type="text"], .field input[type="tel"], .field select, .field textarea {
         width: 100%; font-family: inherit; font-size: 1rem; color: var(--ink);
-        background: var(--bg); border: 1.5px solid var(--line); border-radius: 10px;
-        padding: 11px 14px; min-height: 48px;
+        background: var(--bg); border: 1.5px solid var(--line-strong); border-radius: 10px;
+        padding: 12px 14px; min-height: 50px;
       }
-      .field textarea { min-height: 76px; resize: vertical; }
+      .field textarea { min-height: 74px; resize: vertical; }
+      .field input::placeholder, .field textarea::placeholder { color: var(--ink-faint); }
       .field input:focus, .field select:focus, .field textarea:focus {
         outline: 2px solid var(--brand); outline-offset: 1px; border-color: var(--brand);
       }
-      .field .hint { font-size: .88rem; color: var(--ink-soft); margin-top: 5px; }
-      .radio-row { display: flex; gap: 10px; flex-wrap: wrap; }
+      .field .hint { font-size: .87rem; color: var(--ink-faint); margin-top: 5px; }
+      .radio-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
       .radio-card {
-        display: flex; align-items: center; gap: 9px; border: 1.5px solid var(--line);
-        border-radius: 10px; padding: 10px 16px; cursor: pointer; font-weight: 600; min-height: 48px;
+        display: flex; align-items: center; gap: 9px; border: 1.5px solid var(--line-strong);
+        border-radius: 10px; padding: 12px 14px; cursor: pointer; font-weight: 600; min-height: 50px;
+        background: var(--bg); transition: border-color .15s ease, background .15s ease;
       }
-      .radio-card input { width: 18px; height: 18px; accent-color: var(--brand); }
+      .radio-card input { width: 18px; height: 18px; accent-color: var(--brand); flex: 0 0 auto; }
       .radio-card:has(input:checked) { border-color: var(--brand); background: var(--brand-soft); }
-      .form-error { color: #c92a2a; font-weight: 600; display: none; }
-      @media (prefers-color-scheme: dark) { .form-error { color: #ff8787; } }
+      .form-error { color: #c92a2a; font-weight: 600; display: none; background: #fdf0f0; border-radius: 8px; padding: 10px 14px; }
+      @media (prefers-color-scheme: dark) { .form-error { color: #ff9c9c; background: #382020; } }
 
       .order-result {
         display: none; margin-top: 20px; border: 1.5px solid var(--brand);
-        background: var(--brand-soft); border-radius: 14px; padding: 20px;
+        background: var(--brand-tint); border-radius: var(--radius); padding: 22px;
       }
-      .order-result h3 { font-size: 1.1rem; margin-bottom: 8px; color: var(--brand-dark); }
+      .order-result h3 { font-size: 1.1rem; margin-bottom: 8px; color: var(--brand-dark); display: flex; align-items: center; gap: 9px; }
+      .order-result h3 .ok-ico { width: 28px; height: 28px; border-radius: 50%; background: var(--brand); color: #fff; display: inline-flex; align-items: center; justify-content: center; font-size: .85rem; flex: 0 0 auto; }
+      @media (prefers-color-scheme: dark) { .order-result h3 .ok-ico { color: #07130d; } }
+      .order-result p { color: var(--ink-soft); font-size: .97rem; }
       .order-result pre {
-        white-space: pre-wrap; word-break: break-word; font-family: inherit; font-size: .98rem;
-        background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 14px; margin: 12px 0;
+        white-space: pre-wrap; word-break: break-word; font-family: inherit; font-size: .98rem; line-height: 1.6;
+        background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; margin: 14px 0;
       }
-      .result-actions { display: flex; gap: 10px; flex-wrap: wrap; }
-      .copy-ok { font-weight: 600; color: var(--brand); display: none; align-self: center; }
+      .result-actions { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+      .result-actions .btn { min-height: 46px; padding: 10px 20px; font-size: .99rem; }
+      .copy-ok { font-weight: 600; color: var(--brand); display: none; }
 
       /* FAQ */
-      .faq { margin-top: 22px; display: grid; gap: 10px; }
+      .faq-wrap { max-width: 780px; margin: 24px auto 0; }
+      .faq { display: grid; gap: 10px; }
       details {
-        border: 1.5px solid var(--line); border-radius: 12px; padding: 4px 18px; background: var(--card);
+        border: 1.5px solid var(--line); border-radius: 12px; padding: 2px 20px; background: var(--card);
+        transition: border-color .15s ease;
       }
-      summary { cursor: pointer; font-weight: 600; padding: 12px 0; list-style: none; display: flex; justify-content: space-between; gap: 10px; align-items: center; }
-      summary::after { content: "+"; font-size: 1.3rem; color: var(--brand); font-weight: 700; }
-      details[open ] summary::after { content: "−"; }
-      details p { color: var(--ink-soft); padding: 0 0 14px; }
+      details[open] { border-color: var(--line-strong); }
+      summary { cursor: pointer; font-weight: 600; font-size: 1.02rem; padding: 14px 0; list-style: none; display: flex; justify-content: space-between; gap: 12px; align-items: center; }
+      summary::-webkit-details-marker { display: none; }
+      summary::after { content: "+"; font-size: 1.35rem; color: var(--brand); font-weight: 700; line-height: 1; flex: 0 0 auto; }
+      details[open] summary::after { content: "−"; }
+      details p { color: var(--ink-soft); padding: 0 0 16px; }
 
-      footer { margin-top: 64px; border-top: 1px solid var(--line); padding: 26px 0 110px; }
-      .foot-row { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; align-items: center; }
-      footer p { color: var(--ink-soft); font-size: .95rem; }
+      /* Final CTA */
+      .final-cta {
+        margin-top: 58px; text-align: center; border-radius: 20px; padding: 42px 26px;
+        background: linear-gradient(150deg, var(--bg-band-2), var(--bg-band)); color: #eaf3ef;
+        box-shadow: var(--shadow);
+      }
+      .final-cta h2 { font-size: clamp(1.5rem, 3.4vw, 2rem); }
+      .final-cta p { color: #b9d2c6; margin: 10px auto 0; max-width: 36em; }
+      .final-cta .fc-price { margin-top: 18px; font-size: 1.05rem; }
+      .final-cta .fc-price .num { font-size: 1.9rem; font-weight: 800; color: #fff; }
+      .final-cta .fc-price s { color: #9dbfab; margin-right: 8px; }
+      .final-cta .btn { margin-top: 20px; background: #fff; color: var(--brand-deep); box-shadow: none; }
+      .final-cta .btn:hover { background: var(--brand-soft); }
+
+      footer { margin-top: 56px; border-top: 1px solid var(--line); padding: 26px 0 40px; }
+      .foot-row { display: flex; justify-content: space-between; gap: 14px; flex-wrap: wrap; align-items: center; }
+      footer p { color: var(--ink-soft); font-size: .94rem; }
       footer a { font-weight: 600; text-decoration: none; }
       footer a:hover { text-decoration: underline; }
 
-      /* Sticky mobile bar */
-      .sticky-bar {
-        position: fixed; left: 0; right: 0; bottom: 0; z-index: 20;
-        background: var(--bg); border-top: 1.5px solid var(--line);
-        padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
-        display: none; align-items: center; justify-content: space-between; gap: 14px;
-        box-shadow: 0 -6px 20px rgba(0,0,0,.08);
-      }
-      .sticky-bar .sb-price { font-weight: 800; font-size: 1.3rem; color: var(--brand); line-height: 1.15; }
-      .sticky-bar .sb-price small { display: block; font-size: .78rem; color: var(--ink-soft); font-weight: 500; }
-      .sticky-bar .sb-price s { font-weight: 500; font-size: .95rem; color: var(--ink-soft); margin-right: 6px; }
-      .sticky-bar .btn { padding: 10px 22px; }
-
-      @media (max-width: 860px) {
-        .hero-grid { grid-template-columns: 1fr; }
-        .hero-visual { min-height: 300px; max-width: 420px; }
+      @media (max-width: 920px) {
+        .hero-grid { grid-template-columns: 1fr; gap: 34px; }
+        .hero-visual { min-height: 360px; max-width: 460px; }
+        .trust-grid { grid-template-columns: repeat(2, 1fr); }
         .preview-grid { grid-template-columns: repeat(2, 1fr); }
+        .inside-grid { grid-template-columns: repeat(2, 1fr); }
         .steps { grid-template-columns: repeat(2, 1fr); }
         .order-grid { grid-template-columns: 1fr; }
+        .order-summary { position: static; }
         .band-grid { grid-template-columns: 1fr; }
-        .band { padding: 24px; }
-        .sticky-bar { display: flex; }
+        .band { padding: 26px; }
+        .order-panel { padding: 20px; }
       }
-      @media (max-width: 520px) {
+      @media (max-width: 540px) {
+        .wrap { padding: 0 16px; }
+        .hero { padding-top: 34px; }
+        .hero-grid { padding-bottom: 38px; }
+        .price-card { gap: 12px; }
+        .price-side { border-left: none; padding-left: 0; }
+        .cta-row .btn { flex: 1 1 auto; }
         .preview-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
-        .preview-card .mock { font-size: 12px; }
+        .preview-card { padding: 7px 7px 10px; }
+        .preview-card .mock { font-size: 11.5px; }
+        .preview-cap { flex-direction: column; align-items: flex-start; gap: 5px; padding-top: 9px; }
         .inside-grid { grid-template-columns: 1fr; }
         .steps { grid-template-columns: 1fr; }
-        .hero { padding-top: 28px; }
+        .trust-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+        .trust-item { padding: 13px 14px; }
+        .radio-row { grid-template-columns: 1fr; }
+        .form-card { padding: 20px; }
+        .hero-visual { min-height: 320px; }
+        .float-badge { left: 0; }
+        section { padding-top: 44px; }
       }
       @media (prefers-reduced-motion: reduce) {
         html { scroll-behavior: auto; }
+        .btn, .preview-card, .filter-btn, .radio-card { transition: none; }
       }
     </style>
   </head>
@@ -302,37 +468,77 @@
       <div class="hero">
         <div class="hero-grid">
           <div>
-            <span class="hero-tag">ফেসবুক বিক্রেতাদের জন্য ডিজিটাল প্যাক</span>
+            <span class="hero-tag"><span class="dot"></span>ফেসবুক বিক্রেতাদের জন্য ডিজিটাল প্যাক</span>
             <h1>৩০টি রেডি + এডিটেবল <span class="hl">Canva টেমপ্লেট</span> — নিজের পণ্য, নিজের লেখা, নিজের দামে</h1>
             <p class="hero-sub">সময় না থাকলে রেডি JPG সরাসরি পোস্ট করুন, আর চাইলে লিংক খুলে নিজের পণ্যের ছবি আর লেখা বসিয়ে নিন — ফ্রি Canva দিয়েই, মাত্র ২ মিনিটে।</p>
             <ul class="hero-points">
-              <li>৩টি থিমে ১০টি করে আলাদা ডিজাইন — মোট ৩০টি, প্রতিটার রেডি JPG + এডিটেবল লিংক</li>
-              <li>Canva Pro লাগবে না — ফ্রি Canva-তেই এডিট হবে</li>
-              <li>পেমেন্টের পর রেডি JPG + Canva লিংক ডেলিভারি মাত্র ১০ মিনিটে</li>
+              <li><span class="tick">✓</span><span>৩টি থিমে ১০টি করে আলাদা ডিজাইন — মোট ৩০টি, প্রতিটার রেডি JPG + এডিটেবল লিংক</span></li>
+              <li><span class="tick">✓</span><span>Canva Pro লাগবে না — ফ্রি Canva-তেই এডিট হবে</span></li>
+              <li><span class="tick">✓</span><span>পেমেন্টের পর রেডি JPG + Canva লিংক ডেলিভারি মাত্র ১০ মিনিটে</span></li>
             </ul>
-            <div class="price-row">
-              <span class="price-now num">৳৯৯</span>
-              <span class="price-was num">৳১৪৯</span>
-              <span class="price-note">লঞ্চ অফার — প্রথম ২০ জন ক্রেতার জন্য</span>
+            <div class="price-card">
+              <div class="price-main">
+                <span class="price-now num">৳৯৯</span>
+                <span class="price-was num">৳১৪৯</span>
+              </div>
+              <div class="price-side">
+                <strong>লঞ্চ অফার চলছে</strong>
+                <span>প্রথম ২০ জন ক্রেতার জন্য — এরপর ৳১৪৯</span>
+              </div>
             </div>
             <div class="cta-row">
-              <a class="btn btn-primary" href="#order">এখনই অর্ডার করুন</a>
+              <a class="btn btn-primary" href="#order">এখনই অর্ডার করুন <span class="arr">→</span></a>
               <a class="btn btn-ghost" href="#preview">টেমপ্লেট দেখুন</a>
             </div>
+            <p class="cta-note">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-3.6 8-10V5l-8-3-8 3v7c0 6.4 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+              পেমেন্ট বিকাশ / নগদে — নম্বর মেসেঞ্জারে দেওয়া হবে, কোনো অ্যাডভান্স ঝুঁকি নেই
+            </p>
           </div>
           <div class="hero-visual" aria-hidden="true">
             <div class="mock theme-pink mock-a">
               <span class="mock-kicker">বুটিক কালেকশন</span>
-              <span class="mock-title" style="font-size:1.7rem;">নতুন কালেকশন<br />এসেছে!</span>
-              <span class="mock-sub">আপনার পণ্যের ছবি এখানে বসান</span>
+              <span class="mock-title" style="font-size:1.55rem;">নতুন কালেকশন<br />এসেছে!</span>
+              <span class="photo-slot">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.1-3.1a2 2 0 0 0-2.8 0L6 21"/></svg>
+                আপনার পণ্যের ছবি এখানে বসান
+              </span>
               <span class="mock-chip">অর্ডার করুন</span>
             </div>
             <div class="mock theme-dark mock-b">
               <span class="mock-kicker">Premium</span>
-              <span class="mock-title" style="font-size:1.5rem;">ধামাকা<br />অফার</span>
+              <span class="mock-title" style="font-size:1.4rem;">ধামাকা<br />অফার</span>
               <span class="mock-sub">সীমিত সময়ের জন্য</span>
               <span class="mock-chip">Shop Now</span>
             </div>
+            <div class="float-badge">
+              <span class="fb-ico">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--brand)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              </span>
+              <span>১০ মিনিটে ডেলিভারি<small>পেমেন্ট নিশ্চিত হলেই মেসেঞ্জারে</small></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= TRUST STRIP ================= -->
+      <div class="trust-strip" aria-label="সুবিধা">
+        <div class="trust-grid">
+          <div class="trust-item">
+            <span class="t-ico"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 9h18"/><path d="M9 21V9"/></svg></span>
+            <div><strong>৩০টি ডিজাইন</strong><span>৩ থিম × ১০টি করে আলাদা লেআউট</span></div>
+          </div>
+          <div class="trust-item">
+            <span class="t-ico"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></span>
+            <div><strong>ফ্রি Canva-তে এডিট</strong><span>Pro ছাড়াই ছবি, লেখা ও দাম বদলান</span></div>
+          </div>
+          <div class="trust-item">
+            <span class="t-ico"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span>
+            <div><strong>১০ মিনিটে ডেলিভারি</strong><span>পেমেন্টের পর মেসেঞ্জারে লিংক</span></div>
+          </div>
+          <div class="trust-item">
+            <span class="t-ico"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-3.6 8-10V5l-8-3-8 3v7c0 6.4 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></span>
+            <div><strong>একবার কিনলেই সারাজীবন</strong><span>মাসিক চার্জ নেই, যতবার খুশি ব্যবহার</span></div>
           </div>
         </div>
       </div>
@@ -340,7 +546,7 @@
       <!-- ================= PREVIEW ================= -->
       <section id="preview">
         <div class="sec-head">
-          <h2>প্যাকের ভেতরের কিছু নমুনা</h2>
+          <h2>প্যাকের ভেতরের কিছু <span class="hl">নমুনা</span></h2>
           <p>প্রতিটি ডিজাইনের রেডি JPG সরাসরি পোস্ট করা যাবে, আবার Canva লিংক খুলে লেখা, দাম, ছবি আর রঙ — সবই বদলে নিতে পারবেন। থিম অনুযায়ী ফিল্টার করে দেখুন।</p>
         </div>
         <div class="filters" role="group" aria-label="থিম ফিল্টার">
@@ -354,76 +560,96 @@
             <div class="mock theme-pink">
               <span class="mock-kicker">বুটিক কালেকশন</span>
               <span class="mock-title">নতুন কালেকশন এসেছে!</span>
-              <span class="mock-sub">হাতে বোনা থ্রি-পিস</span>
+              <span class="photo-slot">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.1-3.1a2 2 0 0 0-2.8 0L6 21"/></svg>
+                শাড়ি — ৳৯৯৯ থেকে
+              </span>
               <span class="mock-chip">অর্ডার করুন</span>
             </div>
-            <div class="preview-cap"><strong>নতুন পণ্যের পোস্ট</strong><span>বুটিক পিংক</span></div>
+            <div class="preview-cap"><strong>নতুন পণ্যের পোস্ট</strong><span class="theme-tag">বুটিক পিংক</span></div>
           </div>
           <div class="preview-card" data-theme="pink">
             <div class="mock theme-pink">
               <span class="mock-kicker">সীমিত অফার</span>
               <span class="mock-title">আজকের অফার মাত্র ৳৫৫০</span>
-              <span class="mock-sub">স্টক শেষ হওয়ার আগেই নিন</span>
+              <span class="photo-slot">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.1-3.1a2 2 0 0 0-2.8 0L6 21"/></svg>
+                আপনার পণ্যের ছবি এখানে
+              </span>
               <span class="mock-chip">ইনবক্স করুন</span>
             </div>
-            <div class="preview-cap"><strong>অফার প্রাইস পোস্ট</strong><span>বুটিক পিংক</span></div>
+            <div class="preview-cap"><strong>অফার প্রাইস পোস্ট</strong><span class="theme-tag">বুটিক পিংক</span></div>
           </div>
           <div class="preview-card" data-theme="minimal">
             <div class="mock theme-minimal">
               <span class="mock-kicker">Sale</span>
-              <span class="mock-title">৫০% পর্যন্ত ছাড়</span>
-              <span class="mock-sub">সব পণ্যে, এই সপ্তাহজুড়ে</span>
+              <span class="mock-title">২০% ছাড়</span>
+              <span class="photo-slot">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.1-3.1a2 2 0 0 0-2.8 0L6 21"/></svg>
+                ফেসওয়াশ ৳৫৫০ → ৳৪৪০
+              </span>
               <span class="mock-chip">কিনুন এখনই</span>
             </div>
-            <div class="preview-cap"><strong>সেল ঘোষণার পোস্ট</strong><span>ক্লিন মিনিমাল</span></div>
+            <div class="preview-cap"><strong>সেল ঘোষণার পোস্ট</strong><span class="theme-tag">ক্লিন মিনিমাল</span></div>
           </div>
           <div class="preview-card" data-theme="minimal">
             <div class="mock theme-minimal">
               <span class="mock-kicker">New Stock</span>
               <span class="mock-title">নতুন স্টক এসেছে</span>
-              <span class="mock-sub">অর্ডার করতে ইনবক্স করুন</span>
+              <span class="photo-slot">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.1-3.1a2 2 0 0 0-2.8 0L6 21"/></svg>
+                আপনার পণ্যের ছবি এখানে
+              </span>
               <span class="mock-chip">অর্ডার করুন</span>
             </div>
-            <div class="preview-cap"><strong>নতুন স্টকের পোস্ট</strong><span>ক্লিন মিনিমাল</span></div>
+            <div class="preview-cap"><strong>নতুন স্টকের পোস্ট</strong><span class="theme-tag">ক্লিন মিনিমাল</span></div>
           </div>
           <div class="preview-card" data-theme="dark">
             <div class="mock theme-dark">
               <span class="mock-kicker">Premium Collection</span>
               <span class="mock-title">প্রিমিয়াম কালেকশন</span>
-              <span class="mock-sub">সেরা মান, সেরা লুক</span>
+              <span class="photo-slot">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.1-3.1a2 2 0 0 0-2.8 0L6 21"/></svg>
+                ঘড়ি — ৳১,৪৯৯ থেকে
+              </span>
               <span class="mock-chip">Shop Now</span>
             </div>
-            <div class="preview-cap"><strong>প্রিমিয়াম পণ্যের পোস্ট</strong><span>ডার্ক প্রিমিয়াম</span></div>
+            <div class="preview-cap"><strong>প্রিমিয়াম পণ্যের পোস্ট</strong><span class="theme-tag">ডার্ক প্রিমিয়াম</span></div>
           </div>
           <div class="preview-card" data-theme="dark">
             <div class="mock theme-dark">
               <span class="mock-kicker">Cash on Delivery</span>
               <span class="mock-title">সারাদেশে ক্যাশ অন ডেলিভারি</span>
-              <span class="mock-sub">পণ্য হাতে পেয়ে টাকা দিন</span>
+              <span class="photo-slot">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.1-3.1a2 2 0 0 0-2.8 0L6 21"/></svg>
+                কেক — ৳২৫০ থেকে
+              </span>
               <span class="mock-chip">অর্ডার করুন</span>
             </div>
-            <div class="preview-cap"><strong>ডেলিভারি ঘোষণার পোস্ট</strong><span>ডার্ক প্রিমিয়াম</span></div>
+            <div class="preview-cap"><strong>ডেলিভারি ঘোষণার পোস্ট</strong><span class="theme-tag">ডার্ক প্রিমিয়াম</span></div>
           </div>
         </div>
+        <p class="preview-note">এগুলো মাত্র <strong>৬টি নমুনা</strong> — পুরো প্যাকে আছে <strong>৩০টি ডিজাইন</strong>, প্রতিটির রেডি JPG + এডিটেবল Canva লিংক।</p>
       </section>
 
       <!-- ================= WHAT'S INSIDE ================= -->
       <section>
         <div class="sec-head">
-          <h2>৳৯৯-এ যা যা পাচ্ছেন</h2>
+          <h2>৳৯৯-এ যা যা <span class="hl">পাচ্ছেন</span></h2>
+          <p>এক প্যাকেই সব — আলাদা করে আর কিছু কিনতে হবে না।</p>
         </div>
         <div class="inside-grid">
-          <div class="inside-item"><span class="tick">✓</span><div><strong>৩০টি রেডি + এডিটেবল টেমপ্লেট</strong><span>প্রতিটার রেডি JPG সরাসরি পোস্ট করা যাবে, আবার Canva লিংক খুলে নিজের ছবি, লেখা আর দাম বসানো যাবে। নতুন পণ্য, অফার, সেল, স্টক, ডেলিভারি — সব ধরনের পোস্টের জন্য আলাদা ডিজাইন।</span></div></div>
-          <div class="inside-item"><span class="tick">✓</span><div><strong>৩টি থিমে ১০টি করে ডিজাইন</strong><span>বুটিক পিংক, ক্লিন মিনিমাল আর ডার্ক প্রিমিয়াম — প্রতি থিমে ১০টি আলাদা ডিজাইন, মোট ৩০টি। যেকোনো ধরনের ব্যবসার সঙ্গে মানানসই।</span></div></div>
-          <div class="inside-item"><span class="tick">✓</span><div><strong>ফ্রি Canva-তেই চলবে</strong><span>সব এলিমেন্ট ফ্রি, তাই Canva Pro কেনার কোনো খরচ নেই।</span></div></div>
-          <div class="inside-item"><span class="tick">✓</span><div><strong>ফেসবুকের সঠিক সাইজ</strong><span>প্রতিটি ডিজাইন <span class="num">1080 × 1080</span> পিক্সেল — ফেসবুক পোস্টের জন্য একদম পারফেক্ট।</span></div></div>
-          <div class="inside-item"><span class="tick">✓</span><div><strong>যতবার খুশি ব্যবহার করুন</strong><span>একবার কিনলেই সারাজীবন — প্রতিদিন নতুন পোস্ট বানাতে পারবেন, বাড়তি কোনো চার্জ নেই।</span></div></div>
-          <div class="inside-item"><span class="tick">✓</span><div><strong>সহজ বাংলা নির্দেশনা</strong><span>লিংক খুলে কীভাবে এডিট করবেন, ধাপে ধাপে সহজ বাংলায় বুঝিয়ে দেওয়া থাকবে।</span></div></div>
+          <div class="inside-item"><span class="tick">✓</span><strong>৩০টি ডিজাইন, দুইভাবে</strong><span>প্রতিটির রেডি JPG (এখনই পোস্ট করুন) + এডিটেবল Canva লিংক (নিজের মতো বদলে নিন)।</span></div>
+          <div class="inside-item"><span class="tick">✓</span><strong>৩টি থিম, ১০টি করে</strong><span>বুটিক পিংক, ক্লিন মিনিমাল আর ডার্ক প্রিমিয়াম — প্রতিটি থিমে নতুন পণ্য, অফার, প্রাইস লিস্ট, রিভিউ ও অর্ডারের আলাদা লেআউট।</span></div>
+          <div class="inside-item"><span class="tick">✓</span><strong>ছবির জায়গা প্রতিটিতে</strong><span>প্রতিটি ডিজাইনে পণ্যের ছবি বসানোর নির্দিষ্ট জায়গা আছে — ছবি বদলালেই পোস্ট তৈরি।</span></div>
+          <div class="inside-item"><span class="tick">✓</span><strong>ফ্রি Canva-তেই চলবে</strong><span>সব এলিমেন্ট ফ্রি, তাই Canva Pro কেনার কোনো খরচ নেই।</span></div>
+          <div class="inside-item"><span class="tick">✓</span><strong>ফেসবুকের সঠিক সাইজ</strong><span>প্রতিটি ডিজাইন <span class="num">1080 × 1080</span> পিক্সেল — ফেসবুক পোস্টের জন্য একদম পারফেক্ট।</span></div>
+          <div class="inside-item"><span class="tick">✓</span><strong>সহজ বাংলা নির্দেশনা</strong><span>লিংক খুলে কীভাবে এডিট করবেন, ধাপে ধাপে সহজ বাংলায় বুঝিয়ে দেওয়া থাকবে।</span></div>
         </div>
 
         <div class="band">
           <h3>কোন থিমটা আপনার ব্যবসার জন্য?</h3>
-          <p>৩টি থিমে ১০টি করে আলাদা ডিজাইন — মোট ৩০টি। প্রতিটার রেডি JPG আর এডিটেবল Canva লিংক, দুটোই পাচ্ছেন — পোশাকের দোকান হোক বা যেকোনো অনলাইন শপ, পেজের লুক অনুযায়ী বেছে নিন।</p>
+          <p>একই ৩০টি ডিজাইন ৩টি থিমেই পাচ্ছেন — পোশাকের দোকান হোক বা যেকোনো অনলাইন শপ, পেজের লুক অনুযায়ী বেছে নিন।</p>
           <div class="band-grid">
             <div class="band-item"><div class="swatch sw-pink"></div><strong>বুটিক পিংক</strong><span>পোশাক, বুটিক ও মেয়েদের পণ্যের পেজের জন্য নরম আর আকর্ষণীয় লুক।</span></div>
             <div class="band-item"><div class="swatch sw-min"></div><strong>ক্লিন মিনিমাল</strong><span>সব ধরনের দোকানের জন্য পরিষ্কার, ঝকঝকে আর প্রফেশনাল লুক।</span></div>
@@ -434,71 +660,83 @@
 
       <!-- ================= HOW IT WORKS ================= -->
       <section>
-        <div class="sec-head">
-          <h2>অর্ডার থেকে ডেলিভারি — ৪ ধাপে</h2>
+        <div class="sec-head center">
+          <h2>অর্ডার করা খুবই <span class="hl">সহজ</span> — মাত্র ৪ ধাপে</h2>
+          <p>কোনো অ্যাকাউন্ট বা জটিল ধাপ নেই। নিচের ৪টি ধাপেই অর্ডার শেষ।</p>
         </div>
         <div class="steps">
-          <div class="step"><span class="step-no">1</span><strong>অর্ডার ফর্ম পূরণ করুন</strong><p>নিচের ফর্মে নাম, মোবাইল নম্বর আর পছন্দের পেমেন্ট মাধ্যম দিন।</p></div>
-          <div class="step"><span class="step-no">2</span><strong>মেসেঞ্জারে অর্ডার পাঠান</strong><p>তৈরি হওয়া অর্ডারের লেখাটি কপি করে আমাদের ফেসবুক পেজে পাঠিয়ে দিন।</p></div>
-          <div class="step"><span class="step-no">3</span><strong>বিকাশ / নগদে পেমেন্ট</strong><p>মেসেঞ্জারে পেমেন্ট নম্বর দেওয়া হবে — সেখানে ৳৯৯ পাঠালেই অর্ডার নিশ্চিত।</p></div>
-          <div class="step"><span class="step-no">4</span><strong>১০ মিনিটে ডেলিভারি</strong><p>পেমেন্ট নিশ্চিত হলেই রেডি JPG আর Canva টেমপ্লেটের লিংক পেয়ে যাবেন মেসেঞ্জারে।</p></div>
+          <div class="step"><span class="step-no">1</span><strong>ফর্মটি পূরণ করুন</strong><p>নিচের ফর্মে শুধু নাম, মোবাইল নম্বর আর পেমেন্ট মাধ্যম দিন।</p></div>
+          <div class="step"><span class="step-no">2</span><strong>মেসেঞ্জারে পাঠান</strong><p>তৈরি হওয়া লেখাটি কপি করে আমাদের ফেসবুক পেজের মেসেঞ্জারে পাঠিয়ে দিন।</p></div>
+          <div class="step"><span class="step-no">3</span><strong>৳৯৯ পেমেন্ট করুন</strong><p>মেসেঞ্জারে বিকাশ / নগদ নম্বর দেওয়া হবে — সেখানে টাকা পাঠালেই অর্ডার নিশ্চিত।</p></div>
+          <div class="step"><span class="step-no">4</span><strong>১০ মিনিটে পেয়ে যান</strong><p>রেডি JPG + Canva লিংক মেসেঞ্জারেই পৌঁছে যাবে।</p></div>
         </div>
       </section>
 
       <!-- ================= ORDER ================= -->
       <section id="order">
-        <div class="sec-head">
+        <div class="sec-head center">
           <h2>অর্ডার করুন</h2>
-          <p>ফর্মটি পূরণ করলে আপনার অর্ডারের লেখা তৈরি হয়ে যাবে। সেটি কপি করে ফেসবুক পেজের মেসেঞ্জারে পাঠালেই বাকি কাজ আমাদের।</p>
+          <p>ফর্মটি পূরণ করলেই আপনার অর্ডারের লেখা তৈরি হয়ে যাবে — সেটি কপি করে মেসেঞ্জারে পাঠালেই বাকি কাজ আমাদের।</p>
         </div>
-        <div class="order-grid">
-          <div class="order-summary">
-            <h3>আপনার অর্ডার</h3>
-            <div class="sum-row"><span>প্রোডাক্ট</span><strong>৩০টি Canva টেমপ্লেট প্যাক</strong></div>
-            <div class="sum-row"><span>থিম</span><strong>৩টি থিমই অন্তর্ভুক্ত</strong></div>
-            <div class="sum-row"><span>ডেলিভারি</span><strong>রেডি JPG + Canva লিংক, ১০ মিনিটে</strong></div>
-            <div class="sum-row"><span>মূল্য</span><strong><span class="strike num">৳১৪৯</span><span class="sum-total num">৳৯৯</span></strong></div>
-            <div class="launch-pill">লঞ্চ অফার চলছে: প্রথম ২০ জন ক্রেতা পাচ্ছেন ৳৯৯-এ। এরপর দাম হবে ৳১৪৯।</div>
-            <div class="pay-methods">
-              <div class="pay-badge pay-bkash">বিকাশ<small>bKash</small></div>
-              <div class="pay-badge pay-nagad">নগদ<small>Nagad</small></div>
+        <div class="order-panel">
+          <div class="order-grid">
+            <div class="order-summary">
+              <h3><span class="os-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></span>আপনার অর্ডার</h3>
+              <div class="sum-row"><span>প্রোডাক্ট</span><strong>৩০টি Canva টেমপ্লেট প্যাক</strong></div>
+              <div class="sum-row"><span>যা পাবেন</span><strong>রেডি JPG + এডিটেবল লিংক</strong></div>
+              <div class="sum-row"><span>থিম</span><strong>৩টি থিমই অন্তর্ভুক্ত</strong></div>
+              <div class="sum-row"><span>ডেলিভারি</span><strong>মেসেঞ্জারে, ১০ মিনিটে</strong></div>
+              <div class="sum-row"><span>মূল্য</span><strong><span class="strike num">৳১৪৯</span><span class="sum-total num">৳৯৯</span></strong></div>
+              <div class="launch-pill">লঞ্চ অফার চলছে — প্রথম ২০ জন ক্রেতা পাচ্ছেন ৳৯৯-এ। এরপর দাম হবে ৳১৪৯।</div>
+              <div class="pay-methods">
+                <div class="pay-badge pay-bkash">বিকাশ<small>bKash</small></div>
+                <div class="pay-badge pay-nagad">নগদ<small>Nagad</small></div>
+              </div>
+              <p class="sum-safe">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-3.6 8-10V5l-8-3-8 3v7c0 6.4 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+                পেমেন্ট নম্বর সাইটে দেওয়া নেই — অর্ডারের পর মেসেঞ্জারে দেওয়া হবে।
+              </p>
             </div>
-          </div>
 
-          <div>
-            <form class="order-form" id="orderForm" novalidate>
-              <div class="field">
-                <label for="fName">আপনার নাম</label>
-                <input type="text" id="fName" name="name" placeholder="যেমন: রহিম উদ্দিন" autocomplete="name" />
-              </div>
-              <div class="field">
-                <label for="fPhone">মোবাইল নম্বর</label>
-                <input type="tel" id="fPhone" name="phone" placeholder="01XXXXXXXXX" autocomplete="tel" inputmode="tel" />
-                <p class="hint">যে নম্বরে যোগাযোগ করা যাবে — ডেলিভারি ও প্রয়োজনে এই নম্বরেই কথা হবে।</p>
-              </div>
-              <div class="field">
-                <label>কীভাবে পেমেন্ট করতে চান?</label>
-                <div class="radio-row">
-                  <label class="radio-card"><input type="radio" name="pay" value="বিকাশ (bKash)" checked /> বিকাশ (bKash)</label>
-                  <label class="radio-card"><input type="radio" name="pay" value="নগদ (Nagad)" /> নগদ (Nagad)</label>
+            <div>
+              <div class="form-card">
+                <h3>আপনার তথ্য দিন</h3>
+                <p>মাত্র ৩টি জিনিস লাগবে — নাম, মোবাইল নম্বর আর পেমেন্ট মাধ্যম।</p>
+                <form class="order-form" id="orderForm" novalidate>
+                  <div class="field">
+                    <label for="fName">আপনার নাম <span class="req">*</span></label>
+                    <input type="text" id="fName" name="name" placeholder="যেমন: রহিম উদ্দিন" autocomplete="name" />
+                  </div>
+                  <div class="field">
+                    <label for="fPhone">মোবাইল নম্বর <span class="req">*</span></label>
+                    <input type="tel" id="fPhone" name="phone" placeholder="01XXXXXXXXX" autocomplete="tel" inputmode="tel" />
+                    <p class="hint">যে নম্বরে যোগাযোগ করা যাবে — ডেলিভারি ও প্রয়োজনে এই নম্বরেই কথা হবে।</p>
+                  </div>
+                  <div class="field">
+                    <label>কীভাবে পেমেন্ট করতে চান?</label>
+                    <div class="radio-row">
+                      <label class="radio-card"><input type="radio" name="pay" value="বিকাশ (bKash)" checked /> বিকাশ (bKash)</label>
+                      <label class="radio-card"><input type="radio" name="pay" value="নগদ (Nagad)" /> নগদ (Nagad)</label>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label for="fNote">কিছু বলতে চাইলে (ঐচ্ছিক)</label>
+                    <textarea id="fNote" name="note" placeholder="যেমন: আমার পেজের নাম, কোন থিম আগে চাই..."></textarea>
+                  </div>
+                  <p class="form-error" id="formError" role="alert"></p>
+                  <button type="submit" class="btn btn-primary" style="width:100%;">অর্ডারের বিবরণ তৈরি করুন <span class="arr">→</span></button>
+                </form>
+
+                <div class="order-result" id="orderResult">
+                  <h3><span class="ok-ico">✓</span>আপনার অর্ডার তৈরি!</h3>
+                  <p>এবার নিচের লেখাটি কপি করে আমাদের ফেসবুক পেজের মেসেঞ্জারে পাঠিয়ে দিন। পেমেন্ট নম্বর মেসেঞ্জারেই দেওয়া হবে।</p>
+                  <pre id="orderText"></pre>
+                  <div class="result-actions">
+                    <button type="button" class="btn btn-primary" id="copyBtn">লেখাটি কপি করুন</button>
+                    <a class="btn btn-ghost" href="https://www.facebook.com/people/Digikitsbdcom/61596648981158/" target="_blank" rel="noopener">ফেসবুক পেজে যান</a>
+                    <span class="copy-ok" id="copyOk">কপি হয়েছে ✓</span>
+                  </div>
                 </div>
-              </div>
-              <div class="field">
-                <label for="fNote">কিছু বলতে চাইলে (ঐচ্ছিক)</label>
-                <textarea id="fNote" name="note" placeholder="যেমন: আমার পেজের নাম, কোন থিম আগে চাই..."></textarea>
-              </div>
-              <p class="form-error" id="formError"></p>
-              <button type="submit" class="btn btn-primary" style="width:100%;">অর্ডারের বিবরণ তৈরি করুন</button>
-            </form>
-
-            <div class="order-result" id="orderResult">
-              <h3>আপনার অর্ডার তৈরি!</h3>
-              <p>নিচের লেখাটি কপি করে আমাদের ফেসবুক পেজের মেসেঞ্জারে পাঠিয়ে দিন। পেমেন্ট নম্বর মেসেঞ্জারেই দেওয়া হবে।</p>
-              <pre id="orderText"></pre>
-              <div class="result-actions">
-                <button type="button" class="btn btn-primary" id="copyBtn">লেখাটি কপি করুন</button>
-                <a class="btn btn-ghost" href="https://www.facebook.com/people/Digikitsbdcom/61596648981158/" target="_blank" rel="noopener">ফেসবুক পেজে যান</a>
-                <span class="copy-ok" id="copyOk">কপি হয়েছে ✓</span>
               </div>
             </div>
           </div>
@@ -507,30 +745,40 @@
 
       <!-- ================= FAQ ================= -->
       <section>
-        <div class="sec-head">
+        <div class="sec-head center">
           <h2>সাধারণ প্রশ্ন</h2>
+          <p>আর কোনো প্রশ্ন থাকলে ফেসবুক পেজের মেসেঞ্জারে জিজ্ঞেস করুন।</p>
         </div>
-        <div class="faq">
-          <details>
-            <summary>Canva Pro কি কিনতে হবে?</summary>
-            <p>না। টেমপ্লেটগুলো ফ্রি এলিমেন্ট দিয়ে বানানো, তাই ফ্রি Canva অ্যাকাউন্ট দিয়েই সব এডিট করা যাবে।</p>
-          </details>
-          <details>
-            <summary>টেমপ্লেট এডিট করা কি কঠিন?</summary>
-            <p>মোটেই না। সময় না থাকলে রেডি JPG সরাসরি পোস্ট করে দিন। আর এডিট করতে চাইলে লিংকে ক্লিক করলেই ডিজাইন খুলবে — লেখায় ক্লিক করে নিজের লেখা বসান, ছবি টেনে বদলে দিন। সঙ্গে সহজ বাংলা নির্দেশনাও থাকবে।</p>
-          </details>
-          <details>
-            <summary>আমার ব্যবসা বুটিক নয়, তবু কি চলবে?</summary>
-            <p>অবশ্যই। প্যাকে ৩টি থিম আছে — ক্লিন মিনিমাল আর ডার্ক প্রিমিয়াম থিম যেকোনো পণ্যের দোকানের সঙ্গে মানিয়ে যায়। নিজের পণ্যের ছবি আর লেখা বসালেই পোস্ট তৈরি।</p>
-          </details>
-          <details>
-            <summary>ডেলিভারি কীভাবে পাবো?</summary>
-            <p>বিকাশ বা নগদে পেমেন্ট নিশ্চিত হওয়ার ১০ মিনিটের মধ্যে রেডি JPG আর Canva টেমপ্লেটের লিংক মেসেঞ্জারে পাঠিয়ে দেওয়া হবে।</p>
-          </details>
-          <details>
-            <summary>একবার কিনলে কতদিন ব্যবহার করতে পারবো?</summary>
-            <p>সারাজীবন। কোনো মাসিক চার্জ নেই — যতবার খুশি, যত পোস্ট খুশি বানাতে পারবেন।</p>
-          </details>
+        <div class="faq-wrap">
+          <div class="faq">
+            <details>
+              <summary>Canva Pro কি কিনতে হবে?</summary>
+              <p>না। টেমপ্লেটগুলো ফ্রি এলিমেন্ট দিয়ে বানানো, তাই ফ্রি Canva অ্যাকাউন্ট দিয়েই সব এডিট করা যাবে।</p>
+            </details>
+            <details>
+              <summary>টেমপ্লেট এডিট করা কি কঠিন?</summary>
+              <p>মোটেই না। লিংকে ক্লিক করলেই ডিজাইন খুলবে — লেখায় ক্লিক করে নিজের লেখা বসান, ছবির জায়গায় নিজের পণ্যের ছবি বসিয়ে দিন। সঙ্গে সহজ বাংলা নির্দেশনাও থাকবে।</p>
+            </details>
+            <details>
+              <summary>আমার ব্যবসা বুটিক নয়, তবু কি চলবে?</summary>
+              <p>অবশ্যই। প্যাকে ৩টি থিম আছে — ক্লিন মিনিমাল আর ডার্ক প্রিমিয়াম থিম যেকোনো পণ্যের দোকানের সঙ্গে মানিয়ে যায়। নিজের পণ্যের ছবি আর লেখা বসালেই পোস্ট তৈরি।</p>
+            </details>
+            <details>
+              <summary>ডেলিভারি কীভাবে পাবো?</summary>
+              <p>বিকাশ বা নগদে পেমেন্ট নিশ্চিত হওয়ার ১০ মিনিটের মধ্যে রেডি JPG ও Canva টেমপ্লেটের লিংক মেসেঞ্জারে পাঠিয়ে দেওয়া হবে।</p>
+            </details>
+            <details>
+              <summary>একবার কিনলে কতদিন ব্যবহার করতে পারবো?</summary>
+              <p>সারাজীবন। কোনো মাসিক চার্জ নেই — যতবার খুশি, যত পোস্ট খুশি বানাতে পারবেন।</p>
+            </details>
+          </div>
+        </div>
+
+        <div class="final-cta">
+          <h2>আজই আপনার পেজের পোস্টগুলো প্রফেশনাল করুন</h2>
+          <p>৩০টি রেডি + এডিটেবল ডিজাইন — সময় বাঁচান, পেজকে দিন প্রফেশনাল লুক।</p>
+          <div class="fc-price"><s class="num">৳১৪৯</s><span class="num">৳৯৯</span> &nbsp;·&nbsp; প্রথম ২০ জনের জন্য</div>
+          <a class="btn" href="#order">এখনই অর্ডার করুন <span class="arr">→</span></a>
         </div>
       </section>
 
@@ -541,11 +789,6 @@
         </div>
       </footer>
     </main>
-
-    <div class="sticky-bar">
-      <div class="sb-price"><s class="num">৳১৪৯</s><span class="num">৳৯৯</span><small>লঞ্চ অফার — প্রথম ২০ জন</small></div>
-      <a class="btn btn-primary" href="#order">অর্ডার করুন</a>
-    </div>
 
     <script>
       // Theme filter for preview grid
