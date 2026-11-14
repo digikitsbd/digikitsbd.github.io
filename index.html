@@ -368,6 +368,25 @@
       .pay-bkash { color: #c40e54; }
       .pay-nagad { color: #dd4f16; }
       @media (prefers-color-scheme: dark) { .pay-bkash { color: #ff7dab; } .pay-nagad { color: #ffa07a; } }
+      .pay-number {
+        margin-top: 14px; background: var(--brand-tint); border: 1.5px solid var(--brand);
+        border-radius: 12px; padding: 16px 14px 14px; text-align: center;
+      }
+      .pay-number .pay-label { font-size: .98rem; font-weight: 700; color: var(--brand-deep); line-height: 1.4; }
+      .pay-number .pay-num {
+        display: block; font-size: 1.9rem; font-weight: 800; color: var(--brand);
+        letter-spacing: .05em; line-height: 1.25; margin: 5px 0 3px; word-break: break-all;
+      }
+      .pay-number .pay-sub { font-size: .9rem; color: var(--ink-soft); line-height: 1.5; }
+      .pay-copy-btn {
+        margin-top: 10px; font-family: inherit; font-size: .92rem; font-weight: 700;
+        padding: 8px 18px; border-radius: 999px; cursor: pointer; min-height: 38px;
+        background: var(--brand); color: #fff; border: 1.5px solid var(--brand);
+        transition: background .15s ease;
+      }
+      .pay-copy-btn:hover { background: var(--brand-dark); }
+      @media (prefers-color-scheme: dark) { .pay-copy-btn { color: #07130d; } .pay-copy-btn:hover { color: #07130d; } }
+      .pay-copy-ok { display: none; margin-top: 8px; font-size: .9rem; font-weight: 700; color: var(--brand); }
       .sum-safe { margin-top: 14px; font-size: .88rem; color: var(--ink-faint); display: flex; gap: 7px; align-items: flex-start; }
       .sum-safe svg { flex: 0 0 auto; margin-top: 2px; }
 
@@ -524,7 +543,7 @@
             </div>
             <p class="cta-note">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-3.6 8-10V5l-8-3-8 3v7c0 6.4 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
-              পেমেন্ট বিকাশ / নগদে — নম্বর মেসেঞ্জারে দেওয়া হবে, কোনো অ্যাডভান্স ঝুঁকি নেই
+              পেমেন্ট বিকাশ / নগদে — দুটোতেই একই নম্বর: <span class="num" style="font-weight:800;">01400675500</span>
             </p>
           </div>
           <div class="hero-visual" aria-hidden="true">
@@ -699,7 +718,7 @@
         <div class="steps">
           <div class="step"><span class="step-no">1</span><strong>ফর্মটি পূরণ করুন</strong><p>নিচের ফর্মে শুধু নাম, মোবাইল নম্বর আর পেমেন্ট মাধ্যম দিন।</p></div>
           <div class="step"><span class="step-no">2</span><strong>মেসেঞ্জারে পাঠান</strong><p>তৈরি হওয়া লেখাটি কপি করে আমাদের ফেসবুক পেজের মেসেঞ্জারে পাঠিয়ে দিন।</p></div>
-          <div class="step"><span class="step-no">3</span><strong>৳৯৯ পেমেন্ট করুন</strong><p>মেসেঞ্জারে বিকাশ / নগদ নম্বর দেওয়া হবে — সেখানে টাকা পাঠালেই অর্ডার নিশ্চিত।</p></div>
+          <div class="step"><span class="step-no">3</span><strong>৳৯৯ পেমেন্ট করুন</strong><p>বিকাশ / নগদে — দুটোতেই একই নম্বর <span class="num" style="font-weight:700;">01400675500</span>-এ টাকা পাঠালেই অর্ডার নিশ্চিত।</p></div>
           <div class="step"><span class="step-no">4</span><strong>১০ মিনিটে পেয়ে যান</strong><p>রেডি JPG + Canva লিংক মেসেঞ্জারেই পৌঁছে যাবে।</p></div>
         </div>
       </section>
@@ -724,9 +743,17 @@
                 <div class="pay-badge pay-bkash">বিকাশ<small>bKash</small></div>
                 <div class="pay-badge pay-nagad">নগদ<small>Nagad</small></div>
               </div>
+              <div class="pay-number" aria-label="পেমেন্ট নম্বর">
+                <span class="pay-label">এই নম্বরে পেমেন্ট করুন</span>
+                <span class="pay-num num">01400675500</span>
+                <span class="pay-sub">বিকাশ ও নগদ — দুটোতেই এই একই নম্বর</span>
+                <br />
+                <button type="button" class="pay-copy-btn" id="payCopyBtn">নম্বরটি কপি করুন</button>
+                <span class="pay-copy-ok" id="payCopyOk">কপি হয়েছে ✓</span>
+              </div>
               <p class="sum-safe">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-3.6 8-10V5l-8-3-8 3v7c0 6.4 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
-                পেমেন্ট নম্বর সাইটে দেওয়া নেই — অর্ডারের পর মেসেঞ্জারে দেওয়া হবে।
+                পেমেন্টের পর TrxID বা স্ক্রিনশটটি মেসেঞ্জারে পাঠিয়ে দিন — যাচাই করে ১০ মিনিটে ডেলিভারি দেওয়া হবে।
               </p>
             </div>
 
@@ -761,7 +788,7 @@
 
                 <div class="order-result" id="orderResult">
                   <h3><span class="ok-ico">✓</span>আপনার অর্ডার তৈরি!</h3>
-                  <p>এবার নিচের লেখাটি কপি করে আমাদের ফেসবুক পেজের মেসেঞ্জারে পাঠিয়ে দিন। পেমেন্ট নম্বর মেসেঞ্জারেই দেওয়া হবে।</p>
+                  <p>এবার নিচের লেখাটি কপি করে আমাদের ফেসবুক পেজের মেসেঞ্জারে পাঠিয়ে দিন। পেমেন্ট করুন বিকাশ / নগদে — দুটোতেই একই নম্বর: <strong class="num">01400675500</strong></p>
                   <pre id="orderText"></pre>
                   <div class="result-actions">
                     <button type="button" class="btn btn-primary" id="copyBtn">লেখাটি কপি করুন</button>
@@ -796,8 +823,12 @@
               <p>অবশ্যই। প্যাকে ৩টি থিম আছে — ক্লিন মিনিমাল আর ডার্ক প্রিমিয়াম থিম যেকোনো পণ্যের দোকানের সঙ্গে মানিয়ে যায়। নিজের পণ্যের ছবি আর লেখা বসালেই পোস্ট তৈরি।</p>
             </details>
             <details>
+              <summary>পেমেন্ট কোন নম্বরে করবো?</summary>
+              <p>বিকাশ ও নগদ — দুটোতেই একই নম্বর: <strong class="num">01400675500</strong>। এই নম্বরে ৳৯৯ পাঠিয়ে TrxID বা স্ক্রিনশটটি মেসেঞ্জারে পাঠিয়ে দিন।</p>
+            </details>
+            <details>
               <summary>ডেলিভারি কীভাবে পাবো?</summary>
-              <p>বিকাশ বা নগদে পেমেন্ট নিশ্চিত হওয়ার ১০ মিনিটের মধ্যে রেডি JPG ও Canva টেমপ্লেটের লিংক মেসেঞ্জারে পাঠিয়ে দেওয়া হবে।</p>
+              <p>বিকাশ বা নগদে (নম্বর: <span class="num">01400675500</span>) পেমেন্ট নিশ্চিত হওয়ার ১০ মিনিটের মধ্যে রেডি JPG ও Canva টেমপ্লেটের লিংক মেসেঞ্জারে পাঠিয়ে দেওয়া হবে।</p>
             </details>
             <details>
               <summary>একবার কিনলে কতদিন ব্যবহার করতে পারবো?</summary>
@@ -886,7 +917,8 @@
           "দাম: ৳৯৯ (লঞ্চ অফার)",
           "নাম: " + name,
           "মোবাইল: " + phone,
-          "পেমেন্ট মাধ্যম: " + pay
+          "পেমেন্ট মাধ্যম: " + pay,
+          "পেমেন্ট নম্বর (বিকাশ/নগদ): 01400675500"
         ];
         if (note) lines.push("নোট: " + note);
 
@@ -895,6 +927,22 @@
         copyOk.style.display = "none";
         resultEl.scrollIntoView({ behavior: "smooth", block: "nearest" });
       });
+
+      // Copy payment number
+      var payCopyBtn = document.getElementById("payCopyBtn");
+      var payCopyOk = document.getElementById("payCopyOk");
+      if (payCopyBtn) {
+        payCopyBtn.addEventListener("click", function () {
+          var numText = "01400675500";
+          function payDone() { payCopyOk.style.display = "block"; }
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(numText).then(payDone, function () { fallbackCopy(numText); payDone(); });
+          } else {
+            fallbackCopy(numText);
+            payDone();
+          }
+        });
+      }
 
       document.getElementById("copyBtn").addEventListener("click", function () {
         var text = orderTextEl.textContent;
