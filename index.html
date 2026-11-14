@@ -1,0 +1,632 @@
+<!doctype html>
+<html lang="bn">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="data:," />
+    <title>Digikitsbd.com</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Archivo:wght@600;800&display=swap" rel="stylesheet" />
+    <style>
+      button, [role="button"], select, summary, input:not([type="checkbox"], [type="radio"]) { min-height: 2.25rem; }
+
+      :root {
+        --bg: #ffffff;
+        --bg-soft: #eef6f2;
+        --bg-band: #0c3b2e;
+        --ink: #15211c;
+        --ink-soft: #45564e;
+        --line: #d9e4de;
+        --brand: #0b6b4f;
+        --brand-dark: #084c38;
+        --brand-soft: #dcefe6;
+        --accent: #e4572e;
+        --accent-soft: #fdeee8;
+        --gold: #c9962e;
+        --card: #ffffff;
+        --shadow: 0 10px 30px rgba(12, 59, 46, .10);
+        --pink-bg: #fbe3ec;
+        --pink-ink: #8c1d4f;
+        --pink-deep: #d6336c;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #0f1714;
+          --bg-soft: #16241e;
+          --bg-band: #081f18;
+          --ink: #eef4f1;
+          --ink-soft: #a9bcb3;
+          --line: #2a3d35;
+          --brand: #2fae85;
+          --brand-dark: #7fd3b6;
+          --brand-soft: #1b322a;
+          --accent: #ff8a5f;
+          --accent-soft: #3a241c;
+          --card: #16211c;
+          --shadow: 0 10px 30px rgba(0, 0, 0, .35);
+          --pink-bg: #3d1f2e;
+          --pink-ink: #f6c6da;
+          --pink-deep: #e86a9c;
+        }
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        font-family: "Hind Siliguri", "Noto Sans Bengali", system-ui, sans-serif;
+        background: var(--bg);
+        color: var(--ink);
+        line-height: 1.65;
+        -webkit-font-smoothing: antialiased;
+      }
+      .wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+      h1, h2, h3 { line-height: 1.3; margin: 0; }
+      p { margin: 0; }
+      a { color: var(--brand); }
+      .num { font-family: "Archivo", "Hind Siliguri", sans-serif; letter-spacing: .01em; }
+
+      /* ---------- Hero ---------- */
+      .hero { padding: 44px 0 8px; }
+      .hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 36px; align-items: center; }
+      .hero-tag {
+        display: inline-block; font-size: .92rem; font-weight: 600;
+        color: var(--brand-dark); background: var(--brand-soft);
+        padding: 5px 14px; border-radius: 999px; margin-bottom: 16px;
+      }
+      .hero h1 { font-size: clamp(1.9rem, 4.6vw, 2.9rem); font-weight: 700; }
+      .hero h1 .hl { color: var(--brand); }
+      .hero-sub { margin-top: 14px; font-size: 1.08rem; color: var(--ink-soft); max-width: 34em; }
+      .hero-points { list-style: none; margin: 20px 0 0; padding: 0; display: grid; gap: 8px; }
+      .hero-points li { display: flex; gap: 10px; align-items: baseline; font-weight: 500; }
+      .hero-points li::before { content: "✓"; color: var(--brand); font-weight: 700; }
+      .price-row { display: flex; align-items: baseline; gap: 14px; margin-top: 26px; flex-wrap: wrap; }
+      .price-now { font-size: 2.6rem; font-weight: 800; color: var(--brand); line-height: 1; }
+      .price-was { font-size: 1.35rem; color: var(--ink-soft); text-decoration: line-through; }
+      .price-note { font-size: .95rem; color: var(--accent); font-weight: 600; }
+      .cta-row { display: flex; gap: 12px; margin-top: 20px; flex-wrap: wrap; }
+      .btn {
+        display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+        font-family: inherit; font-size: 1.05rem; font-weight: 600;
+        padding: 12px 26px; border-radius: 10px; border: 2px solid transparent;
+        cursor: pointer; text-decoration: none; min-height: 48px;
+      }
+      .btn-primary { background: var(--brand); color: #fff; }
+      .btn-primary:hover { background: var(--brand-dark); }
+      @media (prefers-color-scheme: dark) { .btn-primary { color: #08130f; } .btn-primary:hover { color: #08130f; } }
+      .btn-ghost { background: transparent; color: var(--ink); border-color: var(--line); }
+      .btn-ghost:hover { border-color: var(--brand); color: var(--brand); }
+
+      /* Hero visual: stacked template mock */
+      .hero-visual { position: relative; min-height: 340px; }
+      .mock {
+        border-radius: 14px; overflow: hidden; box-shadow: var(--shadow);
+        aspect-ratio: 1 / 1; display: flex; flex-direction: column;
+        align-items: center; justify-content: center; text-align: center; padding: 8%;
+      }
+      .mock .mock-kicker { font-size: .72em; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; opacity: .75; }
+      .mock .mock-title { font-weight: 700; line-height: 1.25; margin: 6px 0; }
+      .mock .mock-sub { font-size: .85em; opacity: .85; }
+      .mock .mock-chip {
+        margin-top: 12px; font-size: .8em; font-weight: 600;
+        padding: 5px 14px; border-radius: 999px;
+      }
+      .hero-visual .mock-a { position: absolute; width: 62%; left: 0; top: 0; z-index: 2; }
+      .hero-visual .mock-b { position: absolute; width: 52%; right: 0; bottom: 0; }
+      .theme-pink { background: var(--pink-bg); color: var(--pink-ink); }
+      .theme-pink .mock-chip { background: var(--pink-deep); color: #fff; }
+      .theme-minimal { background: #f4f4f2; color: #1c1c1a; border: 1px solid #e2e2de; }
+      @media (prefers-color-scheme: dark) { .theme-minimal { background: #ececea; } }
+      .theme-minimal .mock-chip { background: #1c1c1a; color: #fff; }
+      .theme-dark { background: #17150f; color: #efe3c2; }
+      .theme-dark .mock-title { color: var(--gold); }
+      .theme-dark .mock-chip { background: var(--gold); color: #17150f; }
+
+      /* ---------- Sections ---------- */
+      section { padding: 52px 0 8px; }
+      .sec-head { max-width: 40em; }
+      .sec-head h2 { font-size: clamp(1.5rem, 3.4vw, 2rem); font-weight: 700; }
+      .sec-head p { color: var(--ink-soft); margin-top: 8px; }
+
+      .filters { display: flex; gap: 8px; flex-wrap: wrap; margin: 22px 0 18px; }
+      .filter-btn {
+        font-family: inherit; font-size: .98rem; font-weight: 600;
+        padding: 8px 18px; border-radius: 999px; cursor: pointer;
+        background: var(--bg); color: var(--ink-soft); border: 1.5px solid var(--line);
+        min-height: 40px;
+      }
+      .filter-btn[aria-pressed="true"] { background: var(--brand); border-color: var(--brand); color: #fff; }
+      @media (prefers-color-scheme: dark) { .filter-btn[aria-pressed="true"] { color: #08130f; } }
+
+      .preview-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+      .preview-card { display: flex; flex-direction: column; gap: 10px; }
+      .preview-card .mock { font-size: 15px; }
+      .preview-card .mock-title { font-size: 1.45em; }
+      .preview-cap { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+      .preview-cap strong { font-weight: 600; }
+      .preview-cap span { font-size: .88rem; color: var(--ink-soft); white-space: nowrap; }
+      .preview-card[hidden] { display: none; }
+
+      /* Inside list */
+      .inside-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 34px; margin-top: 24px; }
+      .inside-item { display: flex; gap: 12px; }
+      .inside-item .tick {
+        flex: 0 0 auto; width: 26px; height: 26px; border-radius: 50%;
+        background: var(--brand-soft); color: var(--brand); font-weight: 700;
+        display: flex; align-items: center; justify-content: center; font-size: .9rem; margin-top: 3px;
+      }
+      .inside-item strong { display: block; font-weight: 600; }
+      .inside-item span { color: var(--ink-soft); font-size: .97rem; }
+
+      /* Themes band */
+      .band { background: var(--bg-band); color: #eaf3ef; border-radius: 18px; padding: 34px; margin-top: 26px; }
+      .band h3 { font-size: 1.3rem; margin-bottom: 6px; }
+      .band > p { color: #bcd4c9; max-width: 42em; }
+      .band-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 22px; }
+      .band-item { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.14); border-radius: 12px; padding: 18px; }
+      .band-item .swatch { width: 100%; height: 54px; border-radius: 8px; margin-bottom: 12px; }
+      .sw-pink { background: linear-gradient(120deg, #fbe3ec 55%, #d6336c 55%); }
+      .sw-min { background: linear-gradient(120deg, #f4f4f2 55%, #1c1c1a 55%); }
+      .sw-dark { background: linear-gradient(120deg, #17150f 55%, #c9962e 55%); }
+      .band-item strong { display: block; font-size: 1.05rem; }
+      .band-item span { color: #bcd4c9; font-size: .94rem; }
+
+      /* Steps */
+      .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 24px; counter-reset: step; }
+      .step { background: var(--bg-soft); border-radius: 14px; padding: 20px; }
+      .step .step-no {
+        width: 34px; height: 34px; border-radius: 50%; background: var(--brand); color: #fff;
+        font-weight: 700; display: flex; align-items: center; justify-content: center; margin-bottom: 12px;
+        font-family: "Archivo", sans-serif;
+      }
+      @media (prefers-color-scheme: dark) { .step .step-no { color: #08130f; } }
+      .step strong { display: block; font-weight: 600; margin-bottom: 4px; }
+      .step p { color: var(--ink-soft); font-size: .95rem; }
+
+      /* Order */
+      .order-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 30px; margin-top: 24px; align-items: start; }
+      .order-summary {
+        background: var(--card); border: 1.5px solid var(--line); border-radius: 16px;
+        padding: 24px; box-shadow: var(--shadow);
+      }
+      .order-summary h3 { font-size: 1.15rem; margin-bottom: 14px; }
+      .sum-row { display: flex; justify-content: space-between; gap: 12px; padding: 9px 0; border-bottom: 1px dashed var(--line); }
+      .sum-row:last-of-type { border-bottom: none; }
+      .sum-row span { color: var(--ink-soft); }
+      .sum-row .strike { text-decoration: line-through; margin-right: 8px; color: var(--ink-soft); font-weight: 400; }
+      .sum-total { font-size: 1.25rem; font-weight: 700; color: var(--brand); }
+      .launch-pill {
+        margin-top: 16px; background: var(--accent-soft); color: var(--accent);
+        border-radius: 10px; padding: 12px 14px; font-weight: 600; font-size: .97rem;
+      }
+      .pay-methods { display: flex; gap: 10px; margin-top: 16px; }
+      .pay-badge {
+        flex: 1; text-align: center; border: 1.5px solid var(--line); border-radius: 10px;
+        padding: 10px 6px; font-weight: 700;
+      }
+      .pay-badge small { display: block; font-weight: 500; color: var(--ink-soft); font-size: .82rem; }
+      .pay-bkash { color: #d1105a; }
+      .pay-nagad { color: #e8541d; }
+
+      form.order-form { display: grid; gap: 16px; }
+      .field label { display: block; font-weight: 600; margin-bottom: 6px; }
+      .field input[type="text"], .field input[type="tel"], .field select, .field textarea {
+        width: 100%; font-family: inherit; font-size: 1rem; color: var(--ink);
+        background: var(--bg); border: 1.5px solid var(--line); border-radius: 10px;
+        padding: 11px 14px; min-height: 48px;
+      }
+      .field textarea { min-height: 76px; resize: vertical; }
+      .field input:focus, .field select:focus, .field textarea:focus {
+        outline: 2px solid var(--brand); outline-offset: 1px; border-color: var(--brand);
+      }
+      .field .hint { font-size: .88rem; color: var(--ink-soft); margin-top: 5px; }
+      .radio-row { display: flex; gap: 10px; flex-wrap: wrap; }
+      .radio-card {
+        display: flex; align-items: center; gap: 9px; border: 1.5px solid var(--line);
+        border-radius: 10px; padding: 10px 16px; cursor: pointer; font-weight: 600; min-height: 48px;
+      }
+      .radio-card input { width: 18px; height: 18px; accent-color: var(--brand); }
+      .radio-card:has(input:checked) { border-color: var(--brand); background: var(--brand-soft); }
+      .form-error { color: #c92a2a; font-weight: 600; display: none; }
+      @media (prefers-color-scheme: dark) { .form-error { color: #ff8787; } }
+
+      .order-result {
+        display: none; margin-top: 20px; border: 1.5px solid var(--brand);
+        background: var(--brand-soft); border-radius: 14px; padding: 20px;
+      }
+      .order-result h3 { font-size: 1.1rem; margin-bottom: 8px; color: var(--brand-dark); }
+      .order-result pre {
+        white-space: pre-wrap; word-break: break-word; font-family: inherit; font-size: .98rem;
+        background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 14px; margin: 12px 0;
+      }
+      .result-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+      .copy-ok { font-weight: 600; color: var(--brand); display: none; align-self: center; }
+
+      /* FAQ */
+      .faq { margin-top: 22px; display: grid; gap: 10px; }
+      details {
+        border: 1.5px solid var(--line); border-radius: 12px; padding: 4px 18px; background: var(--card);
+      }
+      summary { cursor: pointer; font-weight: 600; padding: 12px 0; list-style: none; display: flex; justify-content: space-between; gap: 10px; align-items: center; }
+      summary::after { content: "+"; font-size: 1.3rem; color: var(--brand); font-weight: 700; }
+      details[open ] summary::after { content: "−"; }
+      details p { color: var(--ink-soft); padding: 0 0 14px; }
+
+      footer { margin-top: 64px; border-top: 1px solid var(--line); padding: 26px 0 110px; }
+      .foot-row { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; align-items: center; }
+      footer p { color: var(--ink-soft); font-size: .95rem; }
+      footer a { font-weight: 600; text-decoration: none; }
+      footer a:hover { text-decoration: underline; }
+
+      /* Sticky mobile bar */
+      .sticky-bar {
+        position: fixed; left: 0; right: 0; bottom: 0; z-index: 20;
+        background: var(--bg); border-top: 1.5px solid var(--line);
+        padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+        display: none; align-items: center; justify-content: space-between; gap: 14px;
+        box-shadow: 0 -6px 20px rgba(0,0,0,.08);
+      }
+      .sticky-bar .sb-price { font-weight: 800; font-size: 1.3rem; color: var(--brand); line-height: 1.15; }
+      .sticky-bar .sb-price small { display: block; font-size: .78rem; color: var(--ink-soft); font-weight: 500; }
+      .sticky-bar .sb-price s { font-weight: 500; font-size: .95rem; color: var(--ink-soft); margin-right: 6px; }
+      .sticky-bar .btn { padding: 10px 22px; }
+
+      @media (max-width: 860px) {
+        .hero-grid { grid-template-columns: 1fr; }
+        .hero-visual { min-height: 300px; max-width: 420px; }
+        .preview-grid { grid-template-columns: repeat(2, 1fr); }
+        .steps { grid-template-columns: repeat(2, 1fr); }
+        .order-grid { grid-template-columns: 1fr; }
+        .band-grid { grid-template-columns: 1fr; }
+        .band { padding: 24px; }
+        .sticky-bar { display: flex; }
+      }
+      @media (max-width: 520px) {
+        .preview-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+        .preview-card .mock { font-size: 12px; }
+        .inside-grid { grid-template-columns: 1fr; }
+        .steps { grid-template-columns: 1fr; }
+        .hero { padding-top: 28px; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="wrap">
+
+      <!-- ================= HERO ================= -->
+      <div class="hero">
+        <div class="hero-grid">
+          <div>
+            <span class="hero-tag">ফেসবুক বিক্রেতাদের জন্য ডিজিটাল প্যাক</span>
+            <h1>৩০টি রেডি + এডিটেবল <span class="hl">Canva টেমপ্লেট</span> — নিজের পণ্য, নিজের লেখা, নিজের দামে</h1>
+            <p class="hero-sub">সময় না থাকলে রেডি JPG সরাসরি পোস্ট করুন, আর চাইলে লিংক খুলে নিজের পণ্যের ছবি আর লেখা বসিয়ে নিন — ফ্রি Canva দিয়েই, মাত্র ২ মিনিটে।</p>
+            <ul class="hero-points">
+              <li>৩টি থিমে ১০টি করে আলাদা ডিজাইন — মোট ৩০টি, প্রতিটার রেডি JPG + এডিটেবল লিংক</li>
+              <li>Canva Pro লাগবে না — ফ্রি Canva-তেই এডিট হবে</li>
+              <li>পেমেন্টের পর রেডি JPG + Canva লিংক ডেলিভারি মাত্র ১০ মিনিটে</li>
+            </ul>
+            <div class="price-row">
+              <span class="price-now num">৳৯৯</span>
+              <span class="price-was num">৳১৪৯</span>
+              <span class="price-note">লঞ্চ অফার — প্রথম ২০ জন ক্রেতার জন্য</span>
+            </div>
+            <div class="cta-row">
+              <a class="btn btn-primary" href="#order">এখনই অর্ডার করুন</a>
+              <a class="btn btn-ghost" href="#preview">টেমপ্লেট দেখুন</a>
+            </div>
+          </div>
+          <div class="hero-visual" aria-hidden="true">
+            <div class="mock theme-pink mock-a">
+              <span class="mock-kicker">বুটিক কালেকশন</span>
+              <span class="mock-title" style="font-size:1.7rem;">নতুন কালেকশন<br />এসেছে!</span>
+              <span class="mock-sub">আপনার পণ্যের ছবি এখানে বসান</span>
+              <span class="mock-chip">অর্ডার করুন</span>
+            </div>
+            <div class="mock theme-dark mock-b">
+              <span class="mock-kicker">Premium</span>
+              <span class="mock-title" style="font-size:1.5rem;">ধামাকা<br />অফার</span>
+              <span class="mock-sub">সীমিত সময়ের জন্য</span>
+              <span class="mock-chip">Shop Now</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= PREVIEW ================= -->
+      <section id="preview">
+        <div class="sec-head">
+          <h2>প্যাকের ভেতরের কিছু নমুনা</h2>
+          <p>প্রতিটি ডিজাইনের রেডি JPG সরাসরি পোস্ট করা যাবে, আবার Canva লিংক খুলে লেখা, দাম, ছবি আর রঙ — সবই বদলে নিতে পারবেন। থিম অনুযায়ী ফিল্টার করে দেখুন।</p>
+        </div>
+        <div class="filters" role="group" aria-label="থিম ফিল্টার">
+          <button type="button" class="filter-btn" data-filter="all" aria-pressed="true">সব থিম</button>
+          <button type="button" class="filter-btn" data-filter="pink" aria-pressed="false">বুটিক পিংক</button>
+          <button type="button" class="filter-btn" data-filter="minimal" aria-pressed="false">ক্লিন মিনিমাল</button>
+          <button type="button" class="filter-btn" data-filter="dark" aria-pressed="false">ডার্ক প্রিমিয়াম</button>
+        </div>
+        <div class="preview-grid" id="previewGrid">
+          <div class="preview-card" data-theme="pink">
+            <div class="mock theme-pink">
+              <span class="mock-kicker">বুটিক কালেকশন</span>
+              <span class="mock-title">নতুন কালেকশন এসেছে!</span>
+              <span class="mock-sub">হাতে বোনা থ্রি-পিস</span>
+              <span class="mock-chip">অর্ডার করুন</span>
+            </div>
+            <div class="preview-cap"><strong>নতুন পণ্যের পোস্ট</strong><span>বুটিক পিংক</span></div>
+          </div>
+          <div class="preview-card" data-theme="pink">
+            <div class="mock theme-pink">
+              <span class="mock-kicker">সীমিত অফার</span>
+              <span class="mock-title">আজকের অফার মাত্র ৳৫৫০</span>
+              <span class="mock-sub">স্টক শেষ হওয়ার আগেই নিন</span>
+              <span class="mock-chip">ইনবক্স করুন</span>
+            </div>
+            <div class="preview-cap"><strong>অফার প্রাইস পোস্ট</strong><span>বুটিক পিংক</span></div>
+          </div>
+          <div class="preview-card" data-theme="minimal">
+            <div class="mock theme-minimal">
+              <span class="mock-kicker">Sale</span>
+              <span class="mock-title">৫০% পর্যন্ত ছাড়</span>
+              <span class="mock-sub">সব পণ্যে, এই সপ্তাহজুড়ে</span>
+              <span class="mock-chip">কিনুন এখনই</span>
+            </div>
+            <div class="preview-cap"><strong>সেল ঘোষণার পোস্ট</strong><span>ক্লিন মিনিমাল</span></div>
+          </div>
+          <div class="preview-card" data-theme="minimal">
+            <div class="mock theme-minimal">
+              <span class="mock-kicker">New Stock</span>
+              <span class="mock-title">নতুন স্টক এসেছে</span>
+              <span class="mock-sub">অর্ডার করতে ইনবক্স করুন</span>
+              <span class="mock-chip">অর্ডার করুন</span>
+            </div>
+            <div class="preview-cap"><strong>নতুন স্টকের পোস্ট</strong><span>ক্লিন মিনিমাল</span></div>
+          </div>
+          <div class="preview-card" data-theme="dark">
+            <div class="mock theme-dark">
+              <span class="mock-kicker">Premium Collection</span>
+              <span class="mock-title">প্রিমিয়াম কালেকশন</span>
+              <span class="mock-sub">সেরা মান, সেরা লুক</span>
+              <span class="mock-chip">Shop Now</span>
+            </div>
+            <div class="preview-cap"><strong>প্রিমিয়াম পণ্যের পোস্ট</strong><span>ডার্ক প্রিমিয়াম</span></div>
+          </div>
+          <div class="preview-card" data-theme="dark">
+            <div class="mock theme-dark">
+              <span class="mock-kicker">Cash on Delivery</span>
+              <span class="mock-title">সারাদেশে ক্যাশ অন ডেলিভারি</span>
+              <span class="mock-sub">পণ্য হাতে পেয়ে টাকা দিন</span>
+              <span class="mock-chip">অর্ডার করুন</span>
+            </div>
+            <div class="preview-cap"><strong>ডেলিভারি ঘোষণার পোস্ট</strong><span>ডার্ক প্রিমিয়াম</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= WHAT'S INSIDE ================= -->
+      <section>
+        <div class="sec-head">
+          <h2>৳৯৯-এ যা যা পাচ্ছেন</h2>
+        </div>
+        <div class="inside-grid">
+          <div class="inside-item"><span class="tick">✓</span><div><strong>৩০টি রেডি + এডিটেবল টেমপ্লেট</strong><span>প্রতিটার রেডি JPG সরাসরি পোস্ট করা যাবে, আবার Canva লিংক খুলে নিজের ছবি, লেখা আর দাম বসানো যাবে। নতুন পণ্য, অফার, সেল, স্টক, ডেলিভারি — সব ধরনের পোস্টের জন্য আলাদা ডিজাইন।</span></div></div>
+          <div class="inside-item"><span class="tick">✓</span><div><strong>৩টি থিমে ১০টি করে ডিজাইন</strong><span>বুটিক পিংক, ক্লিন মিনিমাল আর ডার্ক প্রিমিয়াম — প্রতি থিমে ১০টি আলাদা ডিজাইন, মোট ৩০টি। যেকোনো ধরনের ব্যবসার সঙ্গে মানানসই।</span></div></div>
+          <div class="inside-item"><span class="tick">✓</span><div><strong>ফ্রি Canva-তেই চলবে</strong><span>সব এলিমেন্ট ফ্রি, তাই Canva Pro কেনার কোনো খরচ নেই।</span></div></div>
+          <div class="inside-item"><span class="tick">✓</span><div><strong>ফেসবুকের সঠিক সাইজ</strong><span>প্রতিটি ডিজাইন <span class="num">1080 × 1080</span> পিক্সেল — ফেসবুক পোস্টের জন্য একদম পারফেক্ট।</span></div></div>
+          <div class="inside-item"><span class="tick">✓</span><div><strong>যতবার খুশি ব্যবহার করুন</strong><span>একবার কিনলেই সারাজীবন — প্রতিদিন নতুন পোস্ট বানাতে পারবেন, বাড়তি কোনো চার্জ নেই।</span></div></div>
+          <div class="inside-item"><span class="tick">✓</span><div><strong>সহজ বাংলা নির্দেশনা</strong><span>লিংক খুলে কীভাবে এডিট করবেন, ধাপে ধাপে সহজ বাংলায় বুঝিয়ে দেওয়া থাকবে।</span></div></div>
+        </div>
+
+        <div class="band">
+          <h3>কোন থিমটা আপনার ব্যবসার জন্য?</h3>
+          <p>৩টি থিমে ১০টি করে আলাদা ডিজাইন — মোট ৩০টি। প্রতিটার রেডি JPG আর এডিটেবল Canva লিংক, দুটোই পাচ্ছেন — পোশাকের দোকান হোক বা যেকোনো অনলাইন শপ, পেজের লুক অনুযায়ী বেছে নিন।</p>
+          <div class="band-grid">
+            <div class="band-item"><div class="swatch sw-pink"></div><strong>বুটিক পিংক</strong><span>পোশাক, বুটিক ও মেয়েদের পণ্যের পেজের জন্য নরম আর আকর্ষণীয় লুক।</span></div>
+            <div class="band-item"><div class="swatch sw-min"></div><strong>ক্লিন মিনিমাল</strong><span>সব ধরনের দোকানের জন্য পরিষ্কার, ঝকঝকে আর প্রফেশনাল লুক।</span></div>
+            <div class="band-item"><div class="swatch sw-dark"></div><strong>ডার্ক প্রিমিয়াম</strong><span>গ্যাজেট, ঘড়ি, পারফিউমের মতো প্রিমিয়াম পণ্যের জন্য গাঢ় সোনালি লুক।</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= HOW IT WORKS ================= -->
+      <section>
+        <div class="sec-head">
+          <h2>অর্ডার থেকে ডেলিভারি — ৪ ধাপে</h2>
+        </div>
+        <div class="steps">
+          <div class="step"><span class="step-no">1</span><strong>অর্ডার ফর্ম পূরণ করুন</strong><p>নিচের ফর্মে নাম, মোবাইল নম্বর আর পছন্দের পেমেন্ট মাধ্যম দিন।</p></div>
+          <div class="step"><span class="step-no">2</span><strong>মেসেঞ্জারে অর্ডার পাঠান</strong><p>তৈরি হওয়া অর্ডারের লেখাটি কপি করে আমাদের ফেসবুক পেজে পাঠিয়ে দিন।</p></div>
+          <div class="step"><span class="step-no">3</span><strong>বিকাশ / নগদে পেমেন্ট</strong><p>মেসেঞ্জারে পেমেন্ট নম্বর দেওয়া হবে — সেখানে ৳৯৯ পাঠালেই অর্ডার নিশ্চিত।</p></div>
+          <div class="step"><span class="step-no">4</span><strong>১০ মিনিটে ডেলিভারি</strong><p>পেমেন্ট নিশ্চিত হলেই রেডি JPG আর Canva টেমপ্লেটের লিংক পেয়ে যাবেন মেসেঞ্জারে।</p></div>
+        </div>
+      </section>
+
+      <!-- ================= ORDER ================= -->
+      <section id="order">
+        <div class="sec-head">
+          <h2>অর্ডার করুন</h2>
+          <p>ফর্মটি পূরণ করলে আপনার অর্ডারের লেখা তৈরি হয়ে যাবে। সেটি কপি করে ফেসবুক পেজের মেসেঞ্জারে পাঠালেই বাকি কাজ আমাদের।</p>
+        </div>
+        <div class="order-grid">
+          <div class="order-summary">
+            <h3>আপনার অর্ডার</h3>
+            <div class="sum-row"><span>প্রোডাক্ট</span><strong>৩০টি Canva টেমপ্লেট প্যাক</strong></div>
+            <div class="sum-row"><span>থিম</span><strong>৩টি থিমই অন্তর্ভুক্ত</strong></div>
+            <div class="sum-row"><span>ডেলিভারি</span><strong>রেডি JPG + Canva লিংক, ১০ মিনিটে</strong></div>
+            <div class="sum-row"><span>মূল্য</span><strong><span class="strike num">৳১৪৯</span><span class="sum-total num">৳৯৯</span></strong></div>
+            <div class="launch-pill">লঞ্চ অফার চলছে: প্রথম ২০ জন ক্রেতা পাচ্ছেন ৳৯৯-এ। এরপর দাম হবে ৳১৪৯।</div>
+            <div class="pay-methods">
+              <div class="pay-badge pay-bkash">বিকাশ<small>bKash</small></div>
+              <div class="pay-badge pay-nagad">নগদ<small>Nagad</small></div>
+            </div>
+          </div>
+
+          <div>
+            <form class="order-form" id="orderForm" novalidate>
+              <div class="field">
+                <label for="fName">আপনার নাম</label>
+                <input type="text" id="fName" name="name" placeholder="যেমন: রহিম উদ্দিন" autocomplete="name" />
+              </div>
+              <div class="field">
+                <label for="fPhone">মোবাইল নম্বর</label>
+                <input type="tel" id="fPhone" name="phone" placeholder="01XXXXXXXXX" autocomplete="tel" inputmode="tel" />
+                <p class="hint">যে নম্বরে যোগাযোগ করা যাবে — ডেলিভারি ও প্রয়োজনে এই নম্বরেই কথা হবে।</p>
+              </div>
+              <div class="field">
+                <label>কীভাবে পেমেন্ট করতে চান?</label>
+                <div class="radio-row">
+                  <label class="radio-card"><input type="radio" name="pay" value="বিকাশ (bKash)" checked /> বিকাশ (bKash)</label>
+                  <label class="radio-card"><input type="radio" name="pay" value="নগদ (Nagad)" /> নগদ (Nagad)</label>
+                </div>
+              </div>
+              <div class="field">
+                <label for="fNote">কিছু বলতে চাইলে (ঐচ্ছিক)</label>
+                <textarea id="fNote" name="note" placeholder="যেমন: আমার পেজের নাম, কোন থিম আগে চাই..."></textarea>
+              </div>
+              <p class="form-error" id="formError"></p>
+              <button type="submit" class="btn btn-primary" style="width:100%;">অর্ডারের বিবরণ তৈরি করুন</button>
+            </form>
+
+            <div class="order-result" id="orderResult">
+              <h3>আপনার অর্ডার তৈরি!</h3>
+              <p>নিচের লেখাটি কপি করে আমাদের ফেসবুক পেজের মেসেঞ্জারে পাঠিয়ে দিন। পেমেন্ট নম্বর মেসেঞ্জারেই দেওয়া হবে।</p>
+              <pre id="orderText"></pre>
+              <div class="result-actions">
+                <button type="button" class="btn btn-primary" id="copyBtn">লেখাটি কপি করুন</button>
+                <a class="btn btn-ghost" href="https://www.facebook.com/people/Digikitsbdcom/61596648981158/" target="_blank" rel="noopener">ফেসবুক পেজে যান</a>
+                <span class="copy-ok" id="copyOk">কপি হয়েছে ✓</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= FAQ ================= -->
+      <section>
+        <div class="sec-head">
+          <h2>সাধারণ প্রশ্ন</h2>
+        </div>
+        <div class="faq">
+          <details>
+            <summary>Canva Pro কি কিনতে হবে?</summary>
+            <p>না। টেমপ্লেটগুলো ফ্রি এলিমেন্ট দিয়ে বানানো, তাই ফ্রি Canva অ্যাকাউন্ট দিয়েই সব এডিট করা যাবে।</p>
+          </details>
+          <details>
+            <summary>টেমপ্লেট এডিট করা কি কঠিন?</summary>
+            <p>মোটেই না। সময় না থাকলে রেডি JPG সরাসরি পোস্ট করে দিন। আর এডিট করতে চাইলে লিংকে ক্লিক করলেই ডিজাইন খুলবে — লেখায় ক্লিক করে নিজের লেখা বসান, ছবি টেনে বদলে দিন। সঙ্গে সহজ বাংলা নির্দেশনাও থাকবে।</p>
+          </details>
+          <details>
+            <summary>আমার ব্যবসা বুটিক নয়, তবু কি চলবে?</summary>
+            <p>অবশ্যই। প্যাকে ৩টি থিম আছে — ক্লিন মিনিমাল আর ডার্ক প্রিমিয়াম থিম যেকোনো পণ্যের দোকানের সঙ্গে মানিয়ে যায়। নিজের পণ্যের ছবি আর লেখা বসালেই পোস্ট তৈরি।</p>
+          </details>
+          <details>
+            <summary>ডেলিভারি কীভাবে পাবো?</summary>
+            <p>বিকাশ বা নগদে পেমেন্ট নিশ্চিত হওয়ার ১০ মিনিটের মধ্যে রেডি JPG আর Canva টেমপ্লেটের লিংক মেসেঞ্জারে পাঠিয়ে দেওয়া হবে।</p>
+          </details>
+          <details>
+            <summary>একবার কিনলে কতদিন ব্যবহার করতে পারবো?</summary>
+            <p>সারাজীবন। কোনো মাসিক চার্জ নেই — যতবার খুশি, যত পোস্ট খুশি বানাতে পারবেন।</p>
+          </details>
+        </div>
+      </section>
+
+      <footer>
+        <div class="foot-row">
+          <p><strong style="color:var(--ink);">Digikitsbd.com</strong> — বাংলাদেশি অনলাইন বিক্রেতাদের জন্য ডিজিটাল প্রোডাক্ট।</p>
+          <a href="https://www.facebook.com/people/Digikitsbdcom/61596648981158/" target="_blank" rel="noopener">আমাদের ফেসবুক পেজ</a>
+        </div>
+      </footer>
+    </main>
+
+    <div class="sticky-bar">
+      <div class="sb-price"><s class="num">৳১৪৯</s><span class="num">৳৯৯</span><small>লঞ্চ অফার — প্রথম ২০ জন</small></div>
+      <a class="btn btn-primary" href="#order">অর্ডার করুন</a>
+    </div>
+
+    <script>
+      // Theme filter for preview grid
+      var filterBtns = document.querySelectorAll(".filter-btn");
+      var cards = document.querySelectorAll(".preview-card");
+      filterBtns.forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          filterBtns.forEach(function (b) { b.setAttribute("aria-pressed", "false"); });
+          btn.setAttribute("aria-pressed", "true");
+          var f = btn.getAttribute("data-filter");
+          cards.forEach(function (card) {
+            card.hidden = !(f === "all" || card.getAttribute("data-theme") === f);
+          });
+        });
+      });
+
+      // Order form -> builds a copyable order message
+      var form = document.getElementById("orderForm");
+      var errorEl = document.getElementById("formError");
+      var resultEl = document.getElementById("orderResult");
+      var orderTextEl = document.getElementById("orderText");
+      var copyOk = document.getElementById("copyOk");
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        var name = document.getElementById("fName").value.trim();
+        var phone = document.getElementById("fPhone").value.trim().replace(/[\s-]/g, "");
+        var pay = form.querySelector('input[name="pay"]:checked').value;
+        var note = document.getElementById("fNote").value.trim();
+
+        errorEl.style.display = "none";
+        if (!name) {
+          errorEl.textContent = "অনুগ্রহ করে আপনার নাম লিখুন।";
+          errorEl.style.display = "block";
+          document.getElementById("fName").focus();
+          return;
+        }
+        if (!/^01[0-9]{9}$/.test(phone)) {
+          errorEl.textContent = "সঠিক ১১ ডিজিটের মোবাইল নম্বর দিন (01 দিয়ে শুরু)।";
+          errorEl.style.display = "block";
+          document.getElementById("fPhone").focus();
+          return;
+        }
+
+        var lines = [
+          "নতুন অর্ডার — Digikitsbd.com",
+          "প্রোডাক্ট: ৩০টি Canva টেমপ্লেট প্যাক (৩ থিম)",
+          "দাম: ৳৯৯ (লঞ্চ অফার)",
+          "নাম: " + name,
+          "মোবাইল: " + phone,
+          "পেমেন্ট মাধ্যম: " + pay
+        ];
+        if (note) lines.push("নোট: " + note);
+
+        orderTextEl.textContent = lines.join("\n");
+        resultEl.style.display = "block";
+        copyOk.style.display = "none";
+        resultEl.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      });
+
+      document.getElementById("copyBtn").addEventListener("click", function () {
+        var text = orderTextEl.textContent;
+        function done() { copyOk.style.display = "inline"; }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(done, function () { fallbackCopy(text); done(); });
+        } else {
+          fallbackCopy(text);
+          done();
+        }
+      });
+
+      function fallbackCopy(text) {
+        var ta = document.createElement("textarea");
+        ta.value = text;
+        ta.style.position = "fixed";
+        ta.style.opacity = "0";
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand("copy"); } catch (err) {}
+        document.body.removeChild(ta);
+      }
+    </script>
+  </body>
+</html>
