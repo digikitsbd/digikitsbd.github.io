@@ -53,7 +53,7 @@
         --gold: #b8860b;
         --gold-bright: #d9a521;
         --price-now: #05573d;
-        --price-was: #ff00ff;
+        --price-was: #4f6459;
         --card: #ffffff;
         --shadow-sm: 0 2px 10px rgba(10, 53, 39, .06);
         --shadow: 0 14px 34px rgba(10, 53, 39, .10);
@@ -86,7 +86,7 @@
           --gold: #d9a521;
           --gold-bright: #eec95c;
           --price-now: #4ade80;
-          --price-was: #ff00ff;
+          --price-was: #c9ddd1;
           --card: #14211b;
           --shadow-sm: 0 2px 10px rgba(0,0,0,.25);
           --shadow: 0 14px 34px rgba(0,0,0,.35);
@@ -170,21 +170,30 @@
       .price-card {
         margin-top: 28px; background: linear-gradient(135deg, var(--card) 55%, var(--brand-tint));
         border: 1.5px solid var(--line-strong);
-        border-radius: var(--radius); padding: 20px 22px; box-shadow: var(--shadow);
-        display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+        border-radius: var(--radius); padding: 24px 28px; box-shadow: var(--shadow);
+        display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
       }
-      .price-main { display: flex; align-items: baseline; gap: 14px; }
+      .price-main { display: flex; align-items: baseline; gap: 18px; }
       .price-now { font-size: 3.5rem; font-weight: 800; color: var(--price-now); line-height: 1; letter-spacing: .01em; }
-      .price-was { font-size: 1.55rem; color: var(--price-was); text-decoration: line-through; text-decoration-thickness: 2.5px; font-weight: 700; }
-      .price-side { border-left: 1px dashed var(--line-strong); padding-left: 20px; }
+      .price-was { font-size: 1.85rem; color: var(--price-was); text-decoration: line-through; text-decoration-thickness: 3px; text-decoration-color: currentColor; font-weight: 700; padding: 0 2px; }
+      .price-side { border-left: 1px dashed var(--line-strong); padding: 4px 8px 4px 22px; flex: 1 1 180px; min-width: 0; }
       .price-side strong { display: block; color: var(--accent); font-size: 1.18rem; font-weight: 700; line-height: 1.35; }
-      .price-side span { font-size: .98rem; color: var(--ink-soft); font-weight: 500; }
+      .price-side span { display: block; margin-top: 4px; font-size: 1rem; color: var(--ink-soft); font-weight: 500; line-height: 1.55; }
       .cta-row { display: flex; gap: 12px; margin-top: 22px; flex-wrap: wrap; }
       .cta-note { margin-top: 13px; font-size: 1rem; font-weight: 500; color: var(--ink-soft); display: flex; align-items: center; gap: 7px; flex-wrap: wrap; }
       .cta-note svg { flex: 0 0 auto; }
+      .hero-copy-btn {
+        font-family: inherit; font-size: .9rem; font-weight: 700; line-height: 1.3;
+        padding: 7px 16px; border-radius: 999px; cursor: pointer; min-height: 36px;
+        background: var(--brand); color: #fff; border: 1.5px solid var(--brand);
+        transition: background .15s ease; white-space: nowrap;
+      }
+      .hero-copy-btn:hover { background: var(--brand-dark); }
+      @media (prefers-color-scheme: dark) { .hero-copy-btn { color: #07130d; } .hero-copy-btn:hover { color: #07130d; } }
+      .hero-copy-ok { display: none; font-size: .92rem; font-weight: 700; color: var(--brand); }
 
       /* Hero visual */
-      .hero-visual { position: relative; min-height: 360px; }
+      .hero-visual { position: relative; min-height: 400px; }
       .mock {
         border-radius: 16px; overflow: hidden; box-shadow: var(--shadow);
         aspect-ratio: 1 / 1; display: flex; flex-direction: column;
@@ -211,12 +220,12 @@
       .theme-minimal .photo-slot { background: rgba(0,0,0,.03); }
 
       .hero-visual .mock-a { position: absolute; width: 60%; left: 0; top: 0; z-index: 2; box-shadow: var(--shadow-lg); }
-      .hero-visual .mock-b { position: absolute; width: 50%; right: 0; bottom: 26px; }
+      .hero-visual .mock-b { position: absolute; width: 50%; right: 0; bottom: 72px; }
       .float-badge {
-        position: absolute; z-index: 3; left: 6%; bottom: 0;
+        position: absolute; z-index: 3; left: 0; bottom: 0;
         background: var(--card); border: 1.5px solid var(--line); border-radius: 12px;
-        box-shadow: var(--shadow); padding: 10px 16px;
-        display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: .95rem; line-height: 1.3;
+        box-shadow: var(--shadow); padding: 12px 18px; max-width: 88%;
+        display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: .95rem; line-height: 1.35;
       }
       .float-badge .fb-ico {
         width: 34px; height: 34px; border-radius: 50%; background: var(--brand-soft);
@@ -358,7 +367,7 @@
       .sum-row:last-of-type { border-bottom: none; }
       .sum-row span { color: var(--ink-soft); }
       .sum-row strong { text-align: right; }
-      .sum-row .strike { text-decoration: line-through; text-decoration-thickness: 2px; margin-right: 8px; color: var(--price-was); font-weight: 600; }
+      .sum-row .strike { display: inline-block; text-decoration: line-through; text-decoration-thickness: 2.5px; text-decoration-color: currentColor; margin-right: 16px; padding: 0 2px; color: var(--price-was); font-weight: 700; font-size: 1.3rem; line-height: 1.2; vertical-align: baseline; }
       .sum-total { font-size: 1.55rem; font-weight: 800; color: var(--price-now); }
       .launch-pill {
         margin-top: 16px; background: var(--accent-soft); color: var(--accent);
@@ -472,7 +481,7 @@
       .final-cta p { color: #d3e8dc; margin: 12px auto 0; max-width: 36em; font-size: 1.1rem; }
       .final-cta .fc-price { margin-top: 20px; font-size: 1.12rem; color: #d3e8dc; display: flex; align-items: baseline; justify-content: center; gap: 12px; flex-wrap: wrap; }
       .final-cta .fc-price .num { font-size: 2.6rem; font-weight: 800; color: #ffd166; line-height: 1.1; }
-      .final-cta .fc-price s.num { font-size: 1.5rem; font-weight: 700; color: #ff00ff; text-decoration: line-through; text-decoration-thickness: 2.5px; }
+      .final-cta .fc-price s.num { font-size: 1.75rem; font-weight: 700; color: #eef7f1; text-decoration: line-through; text-decoration-thickness: 3px; text-decoration-color: #fda4af; padding: 0 3px; }
       .final-cta .btn { margin-top: 22px; background: #ffffff; color: #06402d; box-shadow: 0 12px 26px rgba(0,0,0,.3); font-size: 1.2rem; }
       .final-cta .btn:hover { background: #e2f1e9; color: #06402d; }
 
@@ -484,7 +493,7 @@
 
       @media (max-width: 920px) {
         .hero-grid { grid-template-columns: 1fr; gap: 34px; }
-        .hero-visual { min-height: 324px; max-width: 414px; }
+        .hero-visual { min-height: 364px; max-width: 414px; }
         .trust-grid { grid-template-columns: repeat(2, 1fr); }
         .preview-grid { grid-template-columns: repeat(2, 1fr); }
         .inside-grid { grid-template-columns: repeat(2, 1fr); }
@@ -503,8 +512,8 @@
         .hero-sub { font-size: 1.08rem; }
         .hero { padding-top: 34px; }
         .hero-grid { padding-bottom: 38px; }
-        .price-card { gap: 12px; }
-        .price-side { border-left: none; padding-left: 0; }
+        .price-card { gap: 12px; padding: 20px 22px; }
+        .price-side { border-left: none; padding: 2px 6px 2px 0; }
         .cta-row .btn { flex: 1 1 auto; }
         .preview-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
         .preview-card { padding: 7px 7px 10px; }
@@ -516,8 +525,9 @@
         .trust-item { padding: 13px 14px; }
         .radio-row { grid-template-columns: 1fr; }
         .form-card { padding: 20px; }
-        .hero-visual { min-height: 288px; }
-        .float-badge { left: 0; }
+        .hero-visual { min-height: 328px; }
+        .hero-visual .mock-b { bottom: 68px; }
+        .float-badge { left: 0; max-width: 94%; }
         section { padding-top: 40px; }
       }
       @media (prefers-reduced-motion: reduce) {
@@ -558,6 +568,8 @@
             <p class="cta-note">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-3.6 8-10V5l-8-3-8 3v7c0 6.4 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
               পেমেন্ট বিকাশ / নগদে — দুটোতেই একই নম্বর: <span class="num" style="font-weight:800;">01400675500</span>
+              <button type="button" class="hero-copy-btn" id="heroCopyBtn">নম্বর কপি করুন</button>
+              <span class="hero-copy-ok" id="heroCopyOk">কপি হয়েছে ✓</span>
             </p>
           </div>
           <div class="hero-visual" aria-hidden="true">
@@ -580,7 +592,7 @@
               <span class="fb-ico">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--brand)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
               </span>
-              <span>১০ মিনিটে ডেলিভারি<small>পেমেন্ট নিশ্চিত হলেই মেসেঞ্জারে</small></span>
+              <span>১০ মিনিটে ডেলিভারি<small>পেমেন্ট নিশ্চিত হলেই মেসেঞ্জারে পাঠানো হবে</small></span>
             </div>
           </div>
         </div>
@@ -730,10 +742,10 @@
           <p>কোনো অ্যাকাউন্ট বা জটিল ধাপ নেই। নিচের ৪টি ধাপেই অর্ডার শেষ।</p>
         </div>
         <div class="steps">
-          <div class="step"><span class="step-no">1</span><strong>ফর্মটি পূরণ করুন</strong><p>নিচের ফর্মে শুধু নাম, মোবাইল নম্বর আর পেমেন্ট মাধ্যম দিন।</p></div>
-          <div class="step"><span class="step-no">2</span><strong>মেসেঞ্জারে পাঠান</strong><p>তৈরি হওয়া লেখাটি অটো কপি হয়ে যাবে — মেসেঞ্জার বোতামে চাপ দিয়ে ইনবক্সে পেস্ট করে Send চাপলেই হবে।</p></div>
-          <div class="step"><span class="step-no">3</span><strong>৳৯৯ পেমেন্ট করুন</strong><p>বিকাশ / নগদে — দুটোতেই একই নম্বর <span class="num" style="font-weight:700;">01400675500</span>-এ টাকা পাঠালেই অর্ডার নিশ্চিত।</p></div>
-          <div class="step"><span class="step-no">4</span><strong>১০ মিনিটে পেয়ে যান</strong><p>রেডি JPG + Canva লিংক মেসেঞ্জারেই পৌঁছে যাবে।</p></div>
+          <div class="step"><span class="step-no">1</span><strong>৳৯৯ পেমেন্ট করুন</strong><p>বিকাশ / নগদে — দুটোতেই একই নম্বর <span class="num" style="font-weight:700;">01400675500</span>-এ ৳৯৯ পাঠান। পেমেন্ট শেষে TrxID-টি রেখে দিন।</p></div>
+          <div class="step"><span class="step-no">2</span><strong>TrxID-সহ ফর্মটি পূরণ করুন</strong><p>নিচের ফর্মে নাম, মোবাইল নম্বর, পেমেন্ট মাধ্যম আর পেমেন্টের TrxID-টি দিন।</p></div>
+          <div class="step"><span class="step-no">3</span><strong>মেসেঞ্জারে পাঠান</strong><p>তৈরি হওয়া লেখাটি অটো কপি হয়ে যাবে — মেসেঞ্জার বোতামে চাপ দিয়ে ইনবক্সে পেস্ট করে Send চাপলেই হবে।</p></div>
+          <div class="step"><span class="step-no">4</span><strong>১০ মিনিটে পেয়ে যান</strong><p>পেমেন্ট যাচাই হলেই রেডি JPG + Canva লিংক মেসেঞ্জারেই পৌঁছে যাবে।</p></div>
         </div>
       </section>
 
@@ -741,7 +753,7 @@
       <section id="order">
         <div class="sec-head center">
           <h2>অর্ডার করুন</h2>
-          <p>ফর্মটি পূরণ করলেই আপনার অর্ডারের লেখা তৈরি হয়ে অটো কপি হয়ে যাবে — মেসেঞ্জার বোতামে চাপ দিয়ে পেস্ট করলেই বাকি কাজ আমাদের।</p>
+          <p>প্রথমে ৳৯৯ পেমেন্ট করুন (বিকাশ/নগদ: <span class="num">01400675500</span>), তারপর TrxID-সহ ফর্মটি পূরণ করুন — অর্ডারের লেখা অটো কপি হয়ে যাবে, মেসেঞ্জার বোতামে চাপ দিয়ে পাঠালেই বাকি কাজ আমাদের।</p>
         </div>
         <div class="order-panel">
           <div class="order-grid">
@@ -751,7 +763,7 @@
               <div class="sum-row"><span>যা পাবেন</span><strong>রেডি JPG + এডিটেবল লিংক</strong></div>
               <div class="sum-row"><span>থিম</span><strong>৩টি থিমই অন্তর্ভুক্ত</strong></div>
               <div class="sum-row"><span>ডেলিভারি</span><strong>মেসেঞ্জারে, ১০ মিনিটে</strong></div>
-              <div class="sum-row"><span>মূল্য</span><strong><span class="strike num">৳১৪৯</span><span class="sum-total num">৳৯৯</span></strong></div>
+              <div class="sum-row"><span>মূল্য</span><strong><span class="strike num">৳১৪৯</span> <span class="sum-total num">৳৯৯</span></strong></div>
               <div class="launch-pill">লঞ্চ অফার চলছে — প্রথম ২০ জন ক্রেতা পাচ্ছেন ৳৯৯-এ। এরপর দাম হবে ৳১৪৯।</div>
               <div class="pay-methods">
                 <div class="pay-badge pay-bkash">বিকাশ<small>bKash</small></div>
@@ -774,7 +786,7 @@
             <div>
               <div class="form-card">
                 <h3>আপনার তথ্য দিন</h3>
-                <p>মাত্র ৩টি জিনিস লাগবে — নাম, মোবাইল নম্বর আর পেমেন্ট মাধ্যম।</p>
+                <p>পেমেন্টের পর TrxID-সহ তথ্য দিন — নাম, মোবাইল নম্বর আর পেমেন্ট মাধ্যম।</p>
                 <form class="order-form" id="orderForm" novalidate>
                   <div class="field">
                     <label for="fName">আপনার নাম <span class="req">*</span></label>
@@ -795,7 +807,7 @@
                   <div class="field">
                     <label for="fTrx">TrxID (ঐচ্ছিক)</label>
                     <input type="text" id="fTrx" name="trxid" placeholder="যেমন: 9HX7K2LM1P" autocomplete="off" />
-                    <p class="hint">পেমেন্ট ইতিমধ্যে করে থাকলে TrxID-টি এখানে দিন — তাহলে অর্ডারের লেখার সঙ্গেই একবারে পাঠানো যাবে। না দিলেও সমস্যা নেই, পরে মেসেঞ্জারে স্ক্রিনশট পাঠালেই হবে।</p>
+                    <p class="hint">প্রথমে ৳৯৯ পেমেন্ট করুন (বিকাশ/নগদ: 01400675500), তারপর পেমেন্টের TrxID-টি এখানে দিন — তাহলে অর্ডারের লেখার সঙ্গেই একবারে মেসেঞ্জারে পাঠানো যাবে। TrxID না দিলেও সমস্যা নেই, পরে মেসেঞ্জারে স্ক্রিনশট পাঠালেই হবে।</p>
                   </div>
                   <div class="field">
                     <label for="fNote">কিছু বলতে চাইলে (ঐচ্ছিক)</label>
@@ -807,7 +819,7 @@
 
                 <div class="order-result" id="orderResult">
                   <h3><span class="ok-ico">✓</span>আপনার অর্ডার তৈরি!</h3>
-                  <p>আপনার অর্ডারের লেখাটি <strong>অটো কপি হয়ে গেছে</strong>। এবার নিচের বড় মেসেঞ্জার বোতামে চাপ দিন — ইনবক্স খুললে শুধু <strong>পেস্ট করে Send</strong> চাপলেই অর্ডার পৌঁছে যাবে। পেমেন্ট করুন বিকাশ / নগদে — দুটোতেই একই নম্বর: <strong class="num">01400675500</strong></p>
+                  <p>আপনার অর্ডারের লেখাটি <strong>অটো কপি হয়ে গেছে</strong>। এবার নিচের বড় মেসেঞ্জার বোতামে চাপ দিন — ইনবক্স খুললে শুধু <strong>পেস্ট করে Send</strong> চাপলেই অর্ডার পৌঁছে যাবে। পেমেন্ট (৳৯৯, বিকাশ/নগদ: <strong class="num">01400675500</strong>) ইতিমধ্যে করে থাকলে TrxID যাচাইয়ের পর ১০ মিনিটে ডেলিভারি পাবেন; পেমেন্ট বাকি থাকলে আগে পেমেন্ট করে TrxID-টি একই ইনবক্সে পাঠিয়ে দিন।</p>
                   <pre id="orderText"></pre>
                   <div class="result-actions">
                     <a class="btn btn-messenger" href="https://m.me/61596648981158" target="_blank" rel="noopener">
@@ -963,6 +975,15 @@
           fallbackCopy(text);
           onDone();
         }
+      }
+
+      // Copy payment number from the hero payment line
+      var heroCopyBtn = document.getElementById("heroCopyBtn");
+      var heroCopyOk = document.getElementById("heroCopyOk");
+      if (heroCopyBtn) {
+        heroCopyBtn.addEventListener("click", function () {
+          copyText("01400675500", function () { heroCopyOk.style.display = "inline"; });
+        });
       }
 
       // Copy payment number
