@@ -437,6 +437,12 @@
       }
       .result-actions { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
       .result-actions .btn { min-height: 46px; padding: 10px 20px; font-size: .99rem; }
+      .btn-messenger {
+        background: #0084ff; color: #fff; box-shadow: 0 12px 26px rgba(0,132,255,.32);
+      }
+      .btn-messenger:hover { background: #0070da; color: #fff; }
+      .btn-messenger svg { flex: 0 0 auto; }
+      .result-actions .btn-messenger { flex: 1 1 100%; min-height: 60px; padding: 14px 24px; font-size: 1.14rem; }
       .copy-ok { font-weight: 600; color: var(--brand); display: none; }
 
       /* FAQ */
@@ -725,7 +731,7 @@
         </div>
         <div class="steps">
           <div class="step"><span class="step-no">1</span><strong>ফর্মটি পূরণ করুন</strong><p>নিচের ফর্মে শুধু নাম, মোবাইল নম্বর আর পেমেন্ট মাধ্যম দিন।</p></div>
-          <div class="step"><span class="step-no">2</span><strong>মেসেঞ্জারে পাঠান</strong><p>তৈরি হওয়া লেখাটি কপি করে আমাদের ফেসবুক পেজের মেসেঞ্জারে পাঠিয়ে দিন।</p></div>
+          <div class="step"><span class="step-no">2</span><strong>মেসেঞ্জারে পাঠান</strong><p>তৈরি হওয়া লেখাটি অটো কপি হয়ে যাবে — মেসেঞ্জার বোতামে চাপ দিয়ে ইনবক্সে পেস্ট করে Send চাপলেই হবে।</p></div>
           <div class="step"><span class="step-no">3</span><strong>৳৯৯ পেমেন্ট করুন</strong><p>বিকাশ / নগদে — দুটোতেই একই নম্বর <span class="num" style="font-weight:700;">01400675500</span>-এ টাকা পাঠালেই অর্ডার নিশ্চিত।</p></div>
           <div class="step"><span class="step-no">4</span><strong>১০ মিনিটে পেয়ে যান</strong><p>রেডি JPG + Canva লিংক মেসেঞ্জারেই পৌঁছে যাবে।</p></div>
         </div>
@@ -735,7 +741,7 @@
       <section id="order">
         <div class="sec-head center">
           <h2>অর্ডার করুন</h2>
-          <p>ফর্মটি পূরণ করলেই আপনার অর্ডারের লেখা তৈরি হয়ে যাবে — সেটি কপি করে মেসেঞ্জারে পাঠালেই বাকি কাজ আমাদের।</p>
+          <p>ফর্মটি পূরণ করলেই আপনার অর্ডারের লেখা তৈরি হয়ে অটো কপি হয়ে যাবে — মেসেঞ্জার বোতামে চাপ দিয়ে পেস্ট করলেই বাকি কাজ আমাদের।</p>
         </div>
         <div class="order-panel">
           <div class="order-grid">
@@ -787,6 +793,11 @@
                     </div>
                   </div>
                   <div class="field">
+                    <label for="fTrx">TrxID (ঐচ্ছিক)</label>
+                    <input type="text" id="fTrx" name="trxid" placeholder="যেমন: 9HX7K2LM1P" autocomplete="off" />
+                    <p class="hint">পেমেন্ট ইতিমধ্যে করে থাকলে TrxID-টি এখানে দিন — তাহলে অর্ডারের লেখার সঙ্গেই একবারে পাঠানো যাবে। না দিলেও সমস্যা নেই, পরে মেসেঞ্জারে স্ক্রিনশট পাঠালেই হবে।</p>
+                  </div>
+                  <div class="field">
                     <label for="fNote">কিছু বলতে চাইলে (ঐচ্ছিক)</label>
                     <textarea id="fNote" name="note" placeholder="যেমন: আমার পেজের নাম, কোন থিম আগে চাই..."></textarea>
                   </div>
@@ -796,11 +807,14 @@
 
                 <div class="order-result" id="orderResult">
                   <h3><span class="ok-ico">✓</span>আপনার অর্ডার তৈরি!</h3>
-                  <p>এবার নিচের লেখাটি কপি করে আমাদের ফেসবুক পেজের মেসেঞ্জারে পাঠিয়ে দিন। পেমেন্ট করুন বিকাশ / নগদে — দুটোতেই একই নম্বর: <strong class="num">01400675500</strong></p>
+                  <p>আপনার অর্ডারের লেখাটি <strong>অটো কপি হয়ে গেছে</strong>। এবার নিচের বড় মেসেঞ্জার বোতামে চাপ দিন — ইনবক্স খুললে শুধু <strong>পেস্ট করে Send</strong> চাপলেই অর্ডার পৌঁছে যাবে। পেমেন্ট করুন বিকাশ / নগদে — দুটোতেই একই নম্বর: <strong class="num">01400675500</strong></p>
                   <pre id="orderText"></pre>
                   <div class="result-actions">
-                    <button type="button" class="btn btn-primary" id="copyBtn">লেখাটি কপি করুন</button>
-                    <a class="btn btn-ghost" href="https://www.facebook.com/people/Digikitsbdcom/61596648981158/" target="_blank" rel="noopener">ফেসবুক পেজে যান</a>
+                    <a class="btn btn-messenger" href="https://m.me/61596648981158" target="_blank" rel="noopener">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.36 2 2 6.13 2 11.7c0 2.91 1.19 5.53 3.14 7.17V22l3.35-1.84c.92.26 1.9.4 2.91.4 5.64 0 10.2-4.13 10.2-9.7C22 6.13 17.64 2 12 2zm1.19 12.46-2.6-2.77-5.07 2.77 5.57-5.92 2.66 2.77 4.99-2.77-5.55 5.92z"/></svg>
+                      মেসেঞ্জারে পাঠান — ইনবক্স খুলুন
+                    </a>
+                    <button type="button" class="btn btn-ghost" id="copyBtn">লেখাটি আবার কপি করুন</button>
                     <span class="copy-ok" id="copyOk">কপি হয়েছে ✓</span>
                   </div>
                 </div>
@@ -903,6 +917,7 @@
         var name = document.getElementById("fName").value.trim();
         var phone = document.getElementById("fPhone").value.trim().replace(/[\s-]/g, "");
         var pay = form.querySelector('input[name="pay"]:checked').value;
+        var trx = document.getElementById("fTrx").value.trim();
         var note = document.getElementById("fNote").value.trim();
 
         errorEl.style.display = "none";
@@ -928,39 +943,40 @@
           "পেমেন্ট মাধ্যম: " + pay,
           "পেমেন্ট নম্বর (বিকাশ/নগদ): 01400675500"
         ];
+        if (trx) lines.push("TrxID: " + trx);
         if (note) lines.push("নোট: " + note);
 
-        orderTextEl.textContent = lines.join("\n");
+        var orderText = lines.join("\n");
+        orderTextEl.textContent = orderText;
         resultEl.style.display = "block";
         copyOk.style.display = "none";
+        // Auto-copy the order text so the customer only has to paste it in Messenger.
+        copyText(orderText, function () { copyOk.style.display = "inline"; });
         resultEl.scrollIntoView({ behavior: "smooth", block: "nearest" });
       });
+
+      // Shared copy helper: Clipboard API with a textarea fallback.
+      function copyText(text, onDone) {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(onDone, function () { fallbackCopy(text); onDone(); });
+        } else {
+          fallbackCopy(text);
+          onDone();
+        }
+      }
 
       // Copy payment number
       var payCopyBtn = document.getElementById("payCopyBtn");
       var payCopyOk = document.getElementById("payCopyOk");
       if (payCopyBtn) {
         payCopyBtn.addEventListener("click", function () {
-          var numText = "01400675500";
-          function payDone() { payCopyOk.style.display = "block"; }
-          if (navigator.clipboard && navigator.clipboard.writeText) {
-            navigator.clipboard.writeText(numText).then(payDone, function () { fallbackCopy(numText); payDone(); });
-          } else {
-            fallbackCopy(numText);
-            payDone();
-          }
+          copyText("01400675500", function () { payCopyOk.style.display = "block"; });
         });
       }
 
+      // Re-copy the order text on demand
       document.getElementById("copyBtn").addEventListener("click", function () {
-        var text = orderTextEl.textContent;
-        function done() { copyOk.style.display = "inline"; }
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-          navigator.clipboard.writeText(text).then(done, function () { fallbackCopy(text); done(); });
-        } else {
-          fallbackCopy(text);
-          done();
-        }
+        copyText(orderTextEl.textContent, function () { copyOk.style.display = "inline"; });
       });
 
       function fallbackCopy(text) {
